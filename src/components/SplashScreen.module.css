@@ -1,0 +1,39 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  color: var(--color-white-soft);
+  text-shadow: 0 0 40px rgba(126, 200, 227, 0.9);
+  letter-spacing: 0.18em;
+  margin-bottom: 1.2rem;
+}
+
+.prompt {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.015); }
+}

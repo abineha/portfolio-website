@@ -1,0 +1,61 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.tile {
+  background: rgba(126, 200, 227, 0.06);
+  border: 1px solid rgba(160, 200, 255, 0.15);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tile:hover {
+  background: rgba(126, 200, 227, 0.12);
+  box-shadow: 0 0 18px rgba(126, 200, 227, 0.15);
+}
+
+.tileImg {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: rgba(126, 200, 227, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(160, 200, 255, 0.12);
+}
+
+.tileTitle {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: var(--color-white-soft);
+  letter-spacing: 0.05em;
+}
+
+.tileDesc {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-white-dim);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.tileTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: var(--color-accent);
+  background: rgba(126, 200, 227, 0.1);
+  border: 1px solid rgba(126, 200, 227, 0.25);
+  border-radius: 4px;
+  padding: 2px 8px;
+  letter-spacing: 0.04em;
+}

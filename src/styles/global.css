@@ -1,0 +1,36 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #0a0a1a;
+  --color-accent: #7ec8e3;
+  --color-accent-glow: #a8d8f0;
+  --color-white-soft: rgba(255, 255, 255, 0.92);
+  --color-white-dim: rgba(255, 255, 255, 0.6);
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Quicksand', sans-serif;
+  --glass-bg: rgba(8, 14, 40, 0.5);
+  --glass-border: rgba(160, 200, 255, 0.2);
+  --glass-blur: blur(14px);
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-white-soft);
+  font-family: var(--font-body);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); }
+::-webkit-scrollbar-thumb { background: rgba(126,200,227,0.35); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(126,200,227,0.65); }

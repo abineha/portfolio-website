@@ -1,0 +1,88 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+}
+
+.fanRoot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.fanItem {
+  position: absolute;
+  width: 300px;
+  height: 66px;
+
+  transform-origin: 0px 33px;
+
+  transform: rotate(var(--rot)) scaleX(0.05);
+  opacity: 0;
+  pointer-events: none;
+  overflow: visible;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  /* filter on the PARENT traces drop-shadow around the ::before triangle.
+     Putting filter on ::before directly conflicts with backdrop-filter
+     and the shadow becomes invisible. */
+  filter:
+    drop-shadow(0 0 1px rgba(255, 255, 255, 1))
+    drop-shadow(0 0 4px rgba(200, 230, 255, 0.75));
+
+  transition:
+    transform 0.38s cubic-bezier(0.34, 1.4, 0.64, 1),
+    opacity   0.28s ease,
+    filter    0.15s ease;
+}
+
+.fanItem.open {
+  transform: rotate(var(--rot)) scaleX(1);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.fanItem:hover {
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 1))
+    drop-shadow(0 0 10px rgba(180, 220, 255, 0.9))
+    drop-shadow(0 0 22px rgba(126, 200, 227, 0.55));
+}
+
+/* True isosceles triangle: tip near pivot, base at outer edge */
+.fanItem::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(22px 50%, 100% 0%, 100% 100%);
+  background: rgba(8, 16, 52, 0.82);
+  backdrop-filter: blur(8px);
+  transition: background 0.15s ease;
+  pointer-events: auto;
+}
+
+.fanItem:hover::before {
+  background: rgba(24, 50, 140, 0.92);
+}
+
+/* Text flows along the blade angle — centered in the wider outer half */
+.fanLabel {
+  position: absolute;
+  left: 210px;
+  top: 33px;
+  transform: translate(-50%, -50%);
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(220, 235, 255, 0.96);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}

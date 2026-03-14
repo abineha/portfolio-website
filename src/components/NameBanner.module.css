@@ -1,0 +1,132 @@
+/*
+ * TODO: Replace this CSS shape with:
+ *   <img src="/assets/banners/name-banner.png" />
+ *   Recommended size: ~320×110px transparent PNG
+ */
+.banner {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  padding: 18px 40px;
+  background: rgba(6, 10, 40, 0.72);
+  border: 1.5px solid rgba(180, 215, 255, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+
+  animation: bannerGlow 3s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+/* Shimmer sweep overlay */
+.banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(200, 230, 255, 0.07) 50%,
+    transparent 80%
+  );
+  animation: sweep 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes bannerGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(126, 200, 227, 0.12),
+      inset 0 0 12px rgba(126, 200, 227, 0.04);
+  }
+  50% {
+    box-shadow:
+      0 0 36px rgba(126, 200, 227, 0.32),
+      0 0 64px rgba(168, 216, 240, 0.1),
+      inset 0 0 20px rgba(126, 200, 227, 0.08);
+  }
+}
+
+@keyframes sweep {
+  0%        { transform: translateX(-200%); }
+  60%, 100% { transform: translateX(250%); }
+}
+
+/* Decorative ornament line with center diamond */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  color: rgba(168, 216, 240, 0.55);
+  font-size: 0.45rem;
+}
+
+.ornament::before,
+.ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(168, 216, 240, 0.5),
+    transparent
+  );
+}
+
+/* Name letters — each floats with staggered delay */
+.nameRow {
+  display: flex;
+  align-items: baseline;
+}
+
+.letter {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--color-white-soft);
+  letter-spacing: 0.1em;
+  text-shadow:
+    0 0 14px rgba(168, 216, 240, 0.85),
+    0 0 30px rgba(126, 200, 227, 0.45);
+  animation: letterWave 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 70ms);
+  will-change: transform;
+}
+
+@keyframes letterWave {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* Character title subtitle */
+.subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+  color: var(--color-accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.quote {
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 1.4vw, 1rem);
+  font-weight: 700;
+  color: rgba(200, 225, 245, 0.75);
+  letter-spacing: 0.04em;
+  font-style: italic;
+  margin: 2px 0 0;
+  text-align: center;
+  max-width: 28ch;
+  line-height: 1.5;
+}

@@ -1,0 +1,112 @@
+.bar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/*
+ * TODO: Replace .btn shapes with ImageButton component using:
+ *   About Me:   src="/assets/buttons/about-me.png"   hoverSrc="/assets/buttons/about-me-hover.png"
+ *   Contact Me: src="/assets/buttons/contact-me.png" hoverSrc="/assets/buttons/contact-me-hover.png"
+ *   Recommended size: ~160×52px transparent PNG
+ */
+.btn {
+  padding: 20px 44px;
+  background: rgba(8, 14, 52, 0.7);
+  border: 1.5px solid rgba(160, 200, 255, 0.38);
+  border-radius: 20px;
+  color: var(--color-white-soft);
+  font-family: var(--font-body);
+  font-size: 1.64rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  will-change: transform;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: rgba(24, 50, 140, 0.85);
+  box-shadow: 0 0 16px rgba(126, 200, 227, 0.4);
+  transform: scale(1.05);
+}
+
+/*
+ * TODO: Replace .circleBtn with:
+ *   <img src="/assets/buttons/volume.png" /> (default)
+ *   <img src="/assets/buttons/volume-hover.png" /> (hover)
+ *   Recommended size: 52×52px transparent PNG
+ */
+.circleBtn {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(8, 14, 52, 0.7);
+  border: 1.5px solid rgba(160, 200, 255, 0.38);
+  color: var(--color-white-soft);
+  font-size: 2.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  will-change: transform;
+}
+
+.circleBtn:hover {
+  background: rgba(24, 50, 140, 0.85);
+  box-shadow: 0 0 16px rgba(126, 200, 227, 0.4);
+  transform: scale(1.07);
+}
+
+.muted {
+  opacity: 0.55;
+}
+
+/* Volume slider panel */
+.volumeWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sliderPanel {
+  position: absolute;
+  bottom: 110px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: rgba(8, 14, 52, 0.85);
+  border: 1px solid rgba(160, 200, 255, 0.3);
+  border-radius: 10px;
+  padding: 12px 10px 8px;
+  backdrop-filter: blur(12px);
+  z-index: 20;
+}
+
+.slider {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  appearance: slider-vertical;
+  -webkit-appearance: slider-vertical;
+  width: 4px;
+  height: 90px;
+  cursor: pointer;
+  accent-color: var(--color-accent);
+}
+
+.volLabel {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}

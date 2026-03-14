@@ -1,0 +1,225 @@
+.treeWrap {
+  width: 100%;
+  position: relative;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* ── Edges ── */
+.edge {
+  fill: none;
+  stroke: rgba(126, 200, 227, 0.3);
+  stroke-width: 2;
+}
+
+.edgeDashed {
+  stroke: rgba(160, 216, 240, 0.28);
+  stroke-dasharray: 7 5;
+  animation: dashScroll 1.8s linear infinite;
+}
+
+@keyframes dashScroll {
+  to { stroke-dashoffset: -24; }
+}
+
+/* ── Nodes ── */
+.node {
+  cursor: pointer;
+}
+
+.nodeGlow {
+  fill: var(--ng);
+  opacity: 0.18;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+.node:hover .nodeGlow {
+  opacity: 0.55;
+  animation: none;
+}
+
+.nodeActive .nodeGlow {
+  opacity: 0.65;
+  animation: none;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.12; transform: scale(1); }
+  50%       { opacity: 0.38; transform: scale(1.15); }
+}
+
+.nodeCircle {
+  fill: rgba(6, 12, 44, 0.9);
+  stroke: var(--nc);
+  stroke-width: 2.5;
+  transition: stroke-width 0.2s ease;
+}
+
+.node:hover .nodeCircle,
+.nodeActive .nodeCircle {
+  stroke-width: 3.5;
+}
+
+/* In-progress nodes: dashed stroke */
+.nodeInProgress .nodeCircle {
+  stroke-dasharray: 5 3;
+  animation: dashCircle 3s linear infinite;
+}
+
+@keyframes dashCircle {
+  to { stroke-dashoffset: -32; }
+}
+
+.nodeDot {
+  fill: var(--nc);
+  opacity: 0.88;
+}
+
+.nodeLabel {
+  fill: rgba(200, 218, 245, 0.88);
+  font-family: var(--font-body);
+  font-size: 14px;
+  text-anchor: middle;
+  pointer-events: none;
+  letter-spacing: 0.02em;
+}
+
+.subtitleBadge {
+  fill: rgba(8, 18, 60, 0.82);
+  stroke: var(--nc);
+  stroke-width: 1;
+  stroke-opacity: 0.55;
+}
+
+.nodeSubtitle {
+  fill: rgba(200, 225, 255, 0.95);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  text-anchor: middle;
+  pointer-events: none;
+  letter-spacing: 0.02em;
+}
+
+/* ── Tooltip overlay (click outside to close) ── */
+.tooltipOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 5, 20, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.tooltip {
+  width: min(700px, 92vw);
+  background: rgba(28, 52, 120, 0.97);
+  border: 1.5px solid rgba(160, 210, 255, 0.6);
+  border-radius: 16px;
+  padding: 34px 38px 36px;
+  backdrop-filter: blur(24px);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(126, 200, 227, 0.18),
+    inset 0 1px 0 rgba(200, 230, 255, 0.12);
+  pointer-events: auto;
+}
+
+.tipHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.tipMeta {
+  flex: 1;
+  min-width: 0;
+}
+
+.tipPeriod {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: rgba(180, 215, 255, 0.85);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.tipTitle {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+.tipBadge {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.tipClose {
+  background: none;
+  border: none;
+  color: rgba(160, 200, 255, 0.45);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.15s ease;
+}
+
+.tipClose:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tipList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid rgba(160, 200, 255, 0.25);
+  padding-top: 14px;
+}
+
+.tipList li {
+  font-family: var(--font-body);
+  font-size: 1.18rem;
+  color: rgba(225, 238, 255, 0.97);
+  line-height: 1.7;
+  padding-left: 22px;
+  position: relative;
+}
+
+.tipList li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  color: rgba(126, 200, 227, 0.6);
+  font-size: 0.5rem;
+}

@@ -1,0 +1,326 @@
+/* ── Outer wrapper ── */
+.timelineOuter {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 56px 0 60px;
+}
+
+/* ── Glowing spine ── */
+.spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    rgba(140, 200, 255, 0.95) 0%,
+    rgba(140, 200, 255, 0.8)  60%,
+    rgba(140, 200, 255, 0.0) 100%
+  );
+  box-shadow:
+    0 0 8px  rgba(140, 180, 255, 0.6),
+    0 0 20px rgba(140, 180, 255, 0.3);
+  pointer-events: none;
+}
+
+/* ── You Are Here ── */
+.youAreHere {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.yahIcon {
+  font-size: 1.1rem;
+  color: rgba(160, 220, 255, 0.95);
+  animation: yahPulse 2.2s ease-in-out infinite;
+}
+
+.yahText {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(160, 215, 255, 0.75);
+}
+
+@keyframes yahPulse {
+  0%, 100% {
+    text-shadow: 0 0 4px rgba(140, 200, 255, 0.6);
+    opacity: 0.75;
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(140, 200, 255, 1), 0 0 28px rgba(140, 200, 255, 0.5);
+    opacity: 1;
+  }
+}
+
+/* ── Entries wrapper ── */
+.entriesWrap {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+/* ── Single entry row ── */
+.entry {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Right: card on the right, node+connector on the left of card */
+.entryRight {
+  flex-direction: row;
+  padding-left: calc(50% + 2px);
+}
+
+/* Left: card on the left, node+connector on the right of card */
+.entryLeft {
+  flex-direction: row-reverse;
+  padding-right: calc(50% + 2px);
+}
+
+/* ── Spine diamond node ── */
+.spineNode {
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.diamond {
+  width: 14px;
+  height: 14px;
+  background: rgba(6, 12, 44, 0.9);
+  border: 2px solid var(--nc);
+  transform: rotate(45deg);
+  box-shadow: 0 0 6px var(--ng), 0 0 14px var(--ng);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.entry:hover .diamond {
+  box-shadow: 0 0 10px var(--nc), 0 0 22px var(--ng);
+  transform: rotate(45deg) scale(1.25);
+}
+
+/* ── Connector line ── */
+.connector {
+  flex-shrink: 0;
+  width: 32px;
+  height: 2px;
+  background: rgba(140, 200, 255, 0.35);
+  margin-top: 29px;
+  box-shadow: 0 0 4px rgba(140, 200, 255, 0.25);
+}
+
+/* ── Card ── */
+.card {
+  position: relative;
+  flex: 1;
+  background: rgba(10, 20, 65, 0.88);
+  border: 1px solid rgba(var(--nc), 0.3);
+  border: 1px solid rgba(160, 200, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px 22px 18px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(160, 200, 255, 0.08);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(160, 200, 255, 0.4);
+  box-shadow:
+    0 6px 32px rgba(0, 0, 0, 0.45),
+    0 0 20px var(--ng);
+}
+
+/* ── Corner ribbon ── */
+.ribbon {
+  position: absolute;
+  top: 16px;
+  right: -26px;
+  width: 100px;
+  padding: 4px 0;
+  text-align: center;
+  transform: rotate(45deg);
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  opacity: 0.9;
+}
+
+/* ── Card header ── */
+.cardHeader {
+  margin-bottom: 10px;
+  padding-right: 40px; /* avoid ribbon overlap */
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.04em;
+}
+
+.cardOrg {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--nc);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cardDate,
+.cardLoc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: rgba(180, 210, 255, 0.75);
+  letter-spacing: 0.03em;
+}
+
+.cardDot {
+  color: rgba(140, 180, 255, 0.4);
+  font-size: 0.85rem;
+}
+
+/* ── Summary ── */
+.cardSummary {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: rgba(215, 232, 255, 0.92);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+
+/* ── Achievements toggle ── */
+.achieveToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--nc);
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nc);
+  padding: 5px 14px 5px 10px;
+  margin-bottom: 12px;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.achieveToggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 8px var(--ng);
+}
+
+.toggleArrow {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* ── Achievements list ── */
+.achieveList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-left: 2px solid rgba(160, 200, 255, 0.2);
+  padding-left: 16px;
+}
+
+.achieveList li {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: rgba(215, 232, 255, 0.92);
+  line-height: 1.65;
+  position: relative;
+}
+
+.achieveList li::before {
+  content: '◆';
+  position: absolute;
+  left: -23px;
+  top: 5px;
+  font-size: 0.42rem;
+  color: rgba(160, 200, 255, 0.55);
+}
+
+/* ── Tags ── */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.tag {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+}
+
+/* ── Mobile: all cards on right, spine on far left ── */
+@media (max-width: 768px) {
+  .spine {
+    left: 20px;
+  }
+
+  .youAreHere {
+    left: 20px;
+    transform: none;
+  }
+
+  .entryRight,
+  .entryLeft {
+    flex-direction: row;
+    padding-left: 52px;
+    padding-right: 0;
+  }
+
+  .spineNode {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+
+  .connector {
+    width: 20px;
+  }
+}

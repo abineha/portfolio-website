@@ -1,0 +1,34 @@
+/*
+ * TODO: Replace this CSS circle with:
+ *   <img src="/assets/buttons/menu.png" /> (default)
+ *   <img src="/assets/buttons/menu-hover.png" /> (hover)
+ *   Recommended size: 52×52px transparent PNG
+ */
+.btn {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: rgba(10, 20, 60, 0.7);
+  border: 1.5px solid rgba(160, 200, 255, 0.4);
+  color: var(--color-white-soft);
+  font-size: 2.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.25s ease;
+  will-change: transform;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 12;
+}
+
+.hovered {
+  background: rgba(30, 55, 130, 0.85);
+  box-shadow: 0 0 18px rgba(126, 200, 227, 0.5);
+}
+
+.rotated {
+  transform: rotate(45deg);
+}
