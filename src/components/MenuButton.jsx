@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { usePageTransition } from './TransitionContext'
 import styles from './MenuButton.module.css'
 
 /**
@@ -15,12 +15,12 @@ import styles from './MenuButton.module.css'
  *   Recommended size: 52×52px transparent PNG
  */
 export default function MenuButton({ mode = 'menu', fanOpen = false, onToggle }) {
-  const navigate = useNavigate()
+  const { navigateTo } = usePageTransition()
   const [hovered, setHovered] = useState(false)
 
   const handleClick = () => {
     if (mode === 'home') {
-      navigate('/')
+      navigateTo('/')
     } else {
       onToggle?.()
     }

@@ -1,24 +1,235 @@
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 12px;
-}
-
-.cell {
-  aspect-ratio: 1;
+/* ── Pinboard wall ───────────────────────────────────────────────────────── */
+.board {
+  /* Graph-paper / atelier wall texture */
+  background-color: rgba(4, 8, 30, 0.55);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(160, 200, 255, 0.035) 0px, rgba(160, 200, 255, 0.035) 1px,
+      transparent 1px, transparent 32px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(160, 200, 255, 0.035) 0px, rgba(160, 200, 255, 0.035) 1px,
+      transparent 1px, transparent 32px
+    );
   border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid rgba(160, 200, 255, 0.14);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 32px 24px 16px;
+  margin: -8px;
+
+  /* CSS columns — natural masonry for mixed aspect ratios */
+  columns: 3 200px;
+  column-gap: 32px;
 }
 
-.cell:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 18px rgba(126, 200, 227, 0.2);
+/* ── Pinned piece ─────────────────────────────────────────────────────────── */
+.pinned {
+  position: relative;
+  display: inline-block; /* required for column layout */
+  width: 100%;
+  break-inside: avoid;
+  margin-bottom: 36px;
+
+  transform: rotate(var(--tilt, 0deg));
+  transform-origin: top center;
+  transition: transform 0.22s ease, filter 0.22s ease;
+  cursor: pointer;
 }
 
+.pinned:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.03);
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.7));
+  z-index: 10;
+}
+
+/* ── Pushpin ──────────────────────────────────────────────────────────────── */
+.pin {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--pin, #f0c060);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.3),
+    inset 0 2px 3px rgba(255, 255, 255, 0.4);
+  z-index: 2;
+}
+
+.pin::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: rgba(80, 60, 30, 0.6);
+  border-radius: 0 0 2px 2px;
+}
+
+/* ── Photo mat (Polaroid-style white border) ─────────────────────────────── */
+.photo {
+  background: rgba(245, 245, 245, 0.97);
+  padding: 8px 8px 28px 8px;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.55),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1px;
+}
+
+/* Placeholder colour tiles (when no image file yet) */
 .placeholder {
   width: 100%;
-  height: 100%;
-  background: rgba(126, 200, 227, 0.07);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--pc, #7ec8e3) 30%, #0a0e28) 0%,
+      color-mix(in srgb, var(--pc, #7ec8e3) 12%, #050818) 100%
+    );
+  border-radius: 1px;
+}
+.portrait  { aspect-ratio: 3 / 4; }
+.landscape { aspect-ratio: 4 / 3; }
+.square    { aspect-ratio: 1 / 1; }
+
+/* ── Caption ─────────────────────────────────────────────────────────────── */
+.caption {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(200, 220, 255, 0.6);
+  text-align: center;
+  margin: 8px 0 0;
+  letter-spacing: 0.04em;
+  font-style: italic;
+}
+
+/* ── Lightbox overlay ─────────────────────────────────────────────────────── */
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.28s ease;
+}
+
+.lightboxVisible {
+  background: rgba(0, 0, 8, 0.82);
+}
+
+.lightboxCard {
+  position: relative;
+  width: min(680px, 90vw);
+  max-height: 90vh;
+  overflow-y: auto;
+
+  /* White photo mat */
+  background: rgba(244, 244, 248, 0.98);
+  border-radius: 3px;
+  padding: 16px 16px 28px;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.15),
+    0 30px 80px rgba(0, 0, 0, 0.85),
+    0 0 40px rgba(0, 0, 0, 0.4);
+
+  transform: scale(0.88) rotate(-1deg);
+  opacity: 0;
+  transition: transform 0.32s cubic-bezier(0.34, 1.2, 0.64, 1), opacity 0.28s ease;
+}
+
+.lightboxCardVisible {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+.lightboxCard::-webkit-scrollbar { width: 3px; }
+.lightboxCard::-webkit-scrollbar-track { background: transparent; }
+.lightboxCard::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.15); border-radius: 2px; }
+
+.lightboxClose {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  color: rgba(30, 30, 50, 0.65);
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lightboxClose:hover {
+  background: rgba(200, 60, 60, 0.18);
+  color: rgba(180, 40, 40, 0.95);
+}
+
+.lightboxImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1px;
+}
+
+.lightboxPlaceholder {
+  width: 100%;
+  border-radius: 1px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--pc, #7ec8e3) 40%, #0a0e28) 0%,
+      color-mix(in srgb, var(--pc, #7ec8e3) 16%, #050818) 100%
+    );
+}
+
+/* ── Lightbox meta ────────────────────────────────────────────────────────── */
+.lightboxMeta {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lightboxDivider {
+  height: 2px;
+  width: 48px;
+  border-radius: 1px;
+  opacity: 0.7;
+}
+
+.lightboxTitle {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: rgba(18, 18, 40, 0.9);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.lightboxFeeling {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: rgba(40, 40, 70, 0.78);
+  line-height: 1.75;
+  margin: 0;
+  font-style: italic;
 }

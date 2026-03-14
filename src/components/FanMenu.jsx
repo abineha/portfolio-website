@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { usePageTransition } from './TransitionContext'
 import styles from './FanMenu.module.css'
 
 const NAV_ITEMS = [
@@ -27,7 +27,7 @@ const ORIGIN_Y = 26   // menu button center Y
  *   Recommended size: ~200×52px transparent PNG per item
  */
 export default function FanMenu({ isOpen, onClose }) {
-  const navigate = useNavigate()
+  const { navigateTo } = usePageTransition()
   const overlayRef = useRef(null)
 
   // Close on outside click
@@ -42,7 +42,7 @@ export default function FanMenu({ isOpen, onClose }) {
 
   const handleNav = (path) => {
     onClose()
-    navigate(path)
+    navigateTo(path)
   }
 
   return (

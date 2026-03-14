@@ -1,10 +1,11 @@
-import { Suspense, lazy, useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { Suspense, lazy, useState } from 'react'
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AudioProvider } from './components/AudioManager'
 import BackgroundVideo from './components/BackgroundVideo'
 import SplashScreen from './components/SplashScreen'
 import CustomCursor from './components/CustomCursor'
 import { useAudio } from './components/AudioManager'
+import { TransitionContext } from './components/TransitionContext'
 import styles from './App.module.css'
 
 const Home = lazy(() => import('./pages/Home'))
@@ -27,24 +28,29 @@ const VIDEO_MAP = {
 
 function AppInner() {
   const location = useLocation()
+  const navigate = useNavigate()
   const { started } = useAudio()
-  const [visible, setVisible] = useState(true)
+  const [flashState, setFlashState] = useState('idle') // 'idle' | 'in' | 'out'
 
   const videoSrc = VIDEO_MAP[location.pathname] || '/assets/videos/home.mp4'
 
-  // Fade pages on route change
-  useEffect(() => {
-    setVisible(false)
-    const t = setTimeout(() => setVisible(true), 80)
-    return () => clearTimeout(t)
-  }, [location.pathname])
+  // Fade to black → navigate → fade from black
+  const navigateTo = (path) => {
+    if (path === location.pathname) return
+    setFlashState('in')
+    setTimeout(() => {
+      navigate(path)
+      setFlashState('out')
+      setTimeout(() => setFlashState('idle'), 450)
+    }, 320)
+  }
 
   if (!started) return <SplashScreen />
 
   return (
-    <>
+    <TransitionContext.Provider value={{ navigateTo }}>
       <BackgroundVideo src={videoSrc} />
-      <div className={`${styles.pageWrapper} ${visible ? styles.visible : styles.hidden}`}>
+      <div className={styles.pageWrapper}>
         <Suspense fallback={null}>
           <Routes>
             <Route path="/"                element={<Home />} />
@@ -57,7 +63,10 @@ function AppInner() {
           </Routes>
         </Suspense>
       </div>
-    </>
+      {flashState !== 'idle' && (
+        <div className={`${styles.flashOverlay} ${flashState === 'in' ? styles.flashIn : styles.flashOut}`} />
+      )}
+    </TransitionContext.Provider>
   )
 }
 
