@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
 import SubPageLayout from '../components/SubPageLayout'
+import { useAudio } from '../components/AudioManager'
 import { musicPieces } from '../data/musicData'
 import styles from './MusicStuff.module.css'
+
+const SHELF_SIZE = 4
 
 // ── CSS-drawn cassette ─────────────────────────────────────────────────────
 function Cassette({ piece, onClick }) {
@@ -47,6 +50,7 @@ function Cassette({ piece, onClick }) {
 // ── Player popup ───────────────────────────────────────────────────────────
 function PlayerCard({ piece, onClose }) {
   const [visible, setVisible] = useState(false)
+  const { duck, unduck } = useAudio()
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 10)
@@ -54,6 +58,7 @@ function PlayerCard({ piece, onClose }) {
   }, [])
 
   const handleClose = () => {
+    unduck()
     setVisible(false)
     setTimeout(onClose, 300)
   }
@@ -90,17 +95,33 @@ function PlayerCard({ piece, onClose }) {
 
           <div className={styles.ornament}><span>◆</span></div>
 
-          {/* Video player or placeholder */}
+          {/* Video or audio player */}
           {piece.src
-            ? <video src={piece.src} controls className={styles.video} />
+            ? piece.type === 'audio'
+              ? (
+                <div className={styles.audioWrap}>
+                  <audio src={piece.src} controls className={styles.audio} />
+                </div>
+              )
+              : <video
+                  src={piece.src}
+                  controls
+                  className={styles.video}
+                  onPlay={duck}
+                  onPause={unduck}
+                  onEnded={unduck}
+                />
             : <div className={styles.videoPlaceholder}>
-                <span className={styles.videoPlaceholderText}>No video file yet — add src in musicData.js</span>
+                <span className={styles.videoPlaceholderText}>No file yet — add src in musicData.js</span>
               </div>
           }
 
-          <div className={styles.ornament}><span>◆</span></div>
-
-          <p className={styles.playerFeeling}>{piece.feeling}</p>
+          {piece.feeling ? (
+            <>
+              <div className={styles.ornament}><span>◆</span></div>
+              <p className={styles.playerFeeling}>{piece.feeling}</p>
+            </>
+          ) : null}
         </div>
       </div>
     </div>
@@ -111,17 +132,25 @@ function PlayerCard({ piece, onClose }) {
 export default function MusicStuff() {
   const [open, setOpen] = useState(null)
 
+  // Chunk into shelves of SHELF_SIZE
+  const shelves = []
+  for (let i = 0; i < musicPieces.length; i += SHELF_SIZE) {
+    shelves.push(musicPieces.slice(i, i + SHELF_SIZE))
+  }
+
   return (
     <>
       <SubPageLayout title="Trying a bit of music stuff" wide>
         <div className={styles.library}>
-          <div className={styles.shelfRow}>
-            <div className={styles.cassettesRow}>
-              {musicPieces.map(p => (
-                <Cassette key={p.id} piece={p} onClick={setOpen} />
-              ))}
+          {shelves.map((shelf, si) => (
+            <div key={si} className={styles.shelfRow}>
+              <div className={styles.cassettesRow}>
+                {shelf.map(p => (
+                  <Cassette key={p.id} piece={p} onClick={setOpen} />
+                ))}
+              </div>
             </div>
-          </div>
+          ))}
 
           <div className={styles.footnote}>
             <div className={styles.footnoteLine} />

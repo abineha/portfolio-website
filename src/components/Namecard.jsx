@@ -155,27 +155,34 @@ function AboutContent() {
     <div className={styles.cardBody}>
       <div className={styles.ornament}><span>◆</span></div>
       <h2 className={styles.cardTitle}>Abineha Prabu</h2>
-      <p className={styles.cardSubtitle}>Master's Student · Computer Science</p>
+      <p className={styles.cardSubtitle}>Masters in Computer Science · Open to SWE Roles</p>
       <div className={styles.ornament}><span>◆</span></div>
 
       <div className={styles.visionRow}>
-        <span className={styles.visionBadge}>✦ Solve Problems</span>
-        <span className={styles.visionBadge}>✦ Create</span>
-        <span className={styles.visionBadge}>✦ Research</span>
+        <span className={styles.visionBadge}>✦ Real-World Systems</span>
+        <span className={styles.visionBadge}>✦ Collaboration</span>
+        <span className={styles.visionBadge}>✦ End-to-End Delivery</span>
       </div>
 
       <div className={styles.aboutScroll}>
         <div className={styles.aboutSection}>
           <p className={styles.sectionLabel}>◈ Hello World!</p>
           <p className={styles.cardText}>
-            I’m Abi, and I’m passionate about computer science because it brings ideas to life. I’m fascinated by all aspects of the field (Software Engineering, AI, Machine Learning, and Cybersecurity). 
-          </p>
-          <p className={styles.cardText}>
-            My work so far has focused on solving real-world problems through collaboration with interdisciplinary experts: I partnered with cardiologists to develop a real-time arrhythmia detector for athletes, and with the Sulur Air Force Base to create a dashboard for equipment maintenance and calibration checks.
-          </p>
-          <p className={styles.cardText}>
-            At my core, I love problem-solving and creating. I build tools inspired by art, music, and video games like visual chess optimization patterns to help beginners evaluate board positions, retro-style Pac-Man games, and more. I also enjoy research and experimentation, having published papers under the guidance of mentors, and I’m currently exploring AI agents and game theory.
-          </p>
+  I build real-world systems by working closely with the people who face the problem, from clinicians and hospital teams to engineers and operational staff, and translating their needs into deployable solutions.
+</p>
+<br></br>
+<p className={styles.cardText}>
+  My approach focuses on understanding workflows, identifying bottlenecks, and delivering end-to-end systems that are actually usable, spanning data, models, interfaces, and deployment rather than isolated prototypes.
+</p>
+<br></br>
+<p className={styles.cardText}>
+  I have applied this across healthcare and operations, including developing a real-time ECG arrhythmia detection system with cardiologists, building a hospital ticketing dashboard to streamline issue tracking, and partnering with the Indian Air Force to analyse and visualise 30,000+ equipment test records for faster decision-making.
+</p>
+<br></br>
+<p className={styles.cardText}>
+  Outside of these systems, I enjoy building and experimenting across different domains, from AI-driven tools to game-inspired projects, and I am currently exploring AI agents and Algorithmic Game Theory.
+</p>
+<br></br>
         
         </div>
 
@@ -185,7 +192,7 @@ function AboutContent() {
         </div>
 
         <div className={styles.aboutSection}>
-          <p className={styles.sectionLabel}>◈ Hobbies</p>
+          <p className={styles.sectionLabel}>◈ Outside Tech</p>
           <div className={styles.hobbies}>
             <span className={styles.hobbyItem}>🎨 Art</span>
             <span className={styles.hobbyItem}>🎵 Music</span>
@@ -193,11 +200,11 @@ function AboutContent() {
             <span className={styles.hobbyItem}>📖 Reading</span>
           </div>
         </div>
-
+<br></br>
         <div className={styles.aboutSection}>
-          <p className={styles.sectionLabel}>◈ Active Quest</p>
+          <p className={styles.sectionLabel}>◈ Currently</p>
           <p className={styles.questText}>
-            After graduation, I aim to pursue a full-time software role applying my skills to impactful projects, while continuing hardware creations and personal projects. My ultimate goal is to keep creating, experimenting, and solving problems that excite me.
+            I’m interested in building real-world systems where AI, software, and hardware intersect, particularly in applications involving live data and user interaction. I’m looking for roles where I can design and deploy reliable, production-grade systems that people depend on, while continuing to build and experiment.
       
           </p>
         </div>

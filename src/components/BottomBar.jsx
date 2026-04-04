@@ -34,11 +34,11 @@ export default function BottomBar({ onAbout, onContact }) {
 
   return (
     <div className={styles.bar}>
-      {/* TODO: Replace with <ImageButton src="..." hoverSrc="..." onClick={onAbout}>About Me</ImageButton> */}
-      <button className={styles.btn} onClick={onAbout}>Intro</button>
+      {/* TODO: Replace with <ImageButton src="..." hoverSrc="..." onClick={onAbout}>Profile</ImageButton> */}
+      <button className={styles.btn} onClick={onAbout}>Profile</button>
 
-      {/* TODO: Replace with <ImageButton src="..." hoverSrc="..." onClick={onContact}>Summon Me</ImageButton> */}
-      <button className={styles.btn} onClick={onContact}>Summon Me</button>
+      {/* TODO: Replace with <ImageButton src="..." hoverSrc="..." onClick={onContact}>Contact</ImageButton> */}
+      <button className={styles.btn} onClick={onContact}>Contact</button>
 
       {/* Volume control */}
       <div className={styles.volumeWrapper}>

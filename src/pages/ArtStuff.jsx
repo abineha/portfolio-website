@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import SubPageLayout from '../components/SubPageLayout'
+import { useAudio } from '../components/AudioManager'
 import { artPieces } from '../data/artData'
 import styles from './ArtStuff.module.css'
 
@@ -23,7 +24,9 @@ function PinnedPiece({ piece, onClick }) {
 
       <div className={styles.photo}>
         {piece.src
-          ? <img src={piece.src} alt={piece.title} className={styles.img} />
+          ? piece.type === 'video'
+            ? <video src={`${piece.src}#t=${piece.previewTime ?? 1}`} className={styles.img} muted playsInline preload="metadata" />
+            : <img src={piece.src} alt={piece.title} className={styles.img} />
           : <div
               className={`${styles.placeholder} ${styles[piece.size]}`}
               style={{ '--pc': piece.pinColor }}
@@ -39,6 +42,7 @@ function PinnedPiece({ piece, onClick }) {
 // ── Lightbox ───────────────────────────────────────────────────────────────
 function Lightbox({ piece, onClose }) {
   const [visible, setVisible] = useState(false)
+  const { duck, unduck } = useAudio()
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 10)
@@ -46,6 +50,7 @@ function Lightbox({ piece, onClose }) {
   }, [])
 
   const handleClose = () => {
+    unduck()
     setVisible(false)
     setTimeout(onClose, 280)
   }
@@ -63,7 +68,9 @@ function Lightbox({ piece, onClose }) {
         <button className={styles.lightboxClose} onClick={handleClose}>✕</button>
 
         {piece.src
-          ? <img src={piece.src} alt={piece.title} className={styles.lightboxImg} />
+          ? piece.type === 'video'
+            ? <video src={piece.src} className={styles.lightboxImg} autoPlay loop muted playsInline controls onPlay={duck} onPause={unduck} onEnded={unduck} />
+            : <img src={piece.src} alt={piece.title} className={styles.lightboxImg} />
           : <div
               className={`${styles.lightboxPlaceholder} ${styles[piece.size]}`}
               style={{ '--pc': piece.pinColor }}

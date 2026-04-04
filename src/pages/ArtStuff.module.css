@@ -134,7 +134,9 @@
   position: relative;
   width: min(680px, 90vw);
   max-height: 90vh;
-  overflow-y: auto;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
 
   /* White photo mat */
   background: rgba(244, 244, 248, 0.98);
@@ -186,8 +188,12 @@
 .lightboxImg {
   width: 100%;
   height: auto;
+  max-height: calc(90vh - 120px);
+  object-fit: contain;
   display: block;
   border-radius: 1px;
+  flex-shrink: 1;
+  min-height: 0;
 }
 
 .lightboxPlaceholder {

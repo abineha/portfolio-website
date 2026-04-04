@@ -65,6 +65,15 @@ export function AudioProvider({ children }) {
     if (howlRef.current) howlRef.current.volume(clamped)
   }, [])
 
+  // Duck BGM to ~10% while a video plays, restore on pause/end
+  const duck = useCallback(() => {
+    if (howlRef.current) howlRef.current.volume(0.05)
+  }, [])
+
+  const unduck = useCallback(() => {
+    if (howlRef.current) howlRef.current.volume(muted ? 0 : volume)
+  }, [muted, volume])
+
   const toggleMute = useCallback(() => {
     setMuted(prev => {
       const next = !prev
@@ -83,7 +92,7 @@ export function AudioProvider({ children }) {
   }, [])
 
   return (
-    <AudioCtx.Provider value={{ started, start, volume, setVolume, muted, toggleMute }}>
+    <AudioCtx.Provider value={{ started, start, volume, setVolume, muted, toggleMute, duck, unduck }}>
       {children}
     </AudioCtx.Provider>
   )

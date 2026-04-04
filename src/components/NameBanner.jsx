@@ -25,7 +25,7 @@ export default function NameBanner() {
         ))}
       </div>
       <p className={styles.subtitle}>Master's Student in Computer Science </p>
-      <p className={styles.quote}>"To keep creating, even when all that remains are scraps."</p>
+      <p className={styles.quote}>To keep creating, even when all that remains are scraps.</p>
       <div className={styles.ornament}><span>◆</span></div>
     </div>
   )

@@ -1,17 +1,23 @@
-// shellColor: the main cassette body colour — use site palette accents
-// glowColor:  rgba glow for hover/modal (should match shellColor)
-// labelBg:    the centre label area background (usually light)
+import v1 from '../assets/music/v1.mp4'
+import v2 from '../assets/music/v2.mp4'
+import v3 from '../assets/music/v3.mp3'
+import v4 from '../assets/music/v4.ogg'
+
+// type: 'video' | 'audio'
+// shellColor: the main cassette body colour
+// glowColor:  rgba glow for hover/modal
+// labelBg:    the centre label area background
 // labelColor: text colour on the label
-// src: path to .mp4 file, e.g. '/assets/music/track-1.mp4'
-//      leave as '' to show a "no video yet" placeholder
+// src: imported asset — add more entries as you drop files into assets/music/
 
 export const musicPieces = [
   {
     id: 1,
-    src: '',
-    title: 'Track One',
-    genre: 'Original Composition',
-    feeling: 'Add your note here — what this piece means to you, when you made it, or how it feels to listen back.',
+    src: v1,
+    type: 'video',
+    title: 'V1',
+    genre: 'Recording',
+    feeling: '',
     shellColor: '#7ec8e3',
     glowColor: 'rgba(126, 200, 227, 0.55)',
     labelBg: 'rgba(232, 246, 255, 0.96)',
@@ -19,10 +25,11 @@ export const musicPieces = [
   },
   {
     id: 2,
-    src: '',
-    title: 'Track Two',
-    genre: 'Cover',
-    feeling: 'Add your note here.',
+    src: v2,
+    type: 'video',
+    title: 'V2',
+    genre: 'Recording',
+    feeling: '',
     shellColor: '#f0c060',
     glowColor: 'rgba(240, 192, 96, 0.55)',
     labelBg: 'rgba(255, 250, 230, 0.96)',
@@ -30,10 +37,11 @@ export const musicPieces = [
   },
   {
     id: 3,
-    src: '',
-    title: 'Track Three',
-    genre: 'Improvisation',
-    feeling: 'Add your note here.',
+    src: v3,
+    type: 'audio',
+    title: 'V3',
+    genre: 'Recording',
+    feeling: '',
     shellColor: '#88dbb8',
     glowColor: 'rgba(136, 219, 184, 0.55)',
     labelBg: 'rgba(228, 252, 242, 0.96)',
@@ -41,24 +49,14 @@ export const musicPieces = [
   },
   {
     id: 4,
-    src: '',
-    title: 'Track Four',
+    src: v4,
+    type: 'audio',
+    title: 'V4',
     genre: 'Recording',
-    feeling: 'Add your note here.',
+    feeling: '',
     shellColor: '#c4a8f0',
     glowColor: 'rgba(196, 168, 240, 0.55)',
     labelBg: 'rgba(244, 238, 255, 0.96)',
     labelColor: '#140828',
-  },
-  {
-    id: 5,
-    src: '',
-    title: 'Track Five',
-    genre: 'Original Composition',
-    feeling: 'Add your note here.',
-    shellColor: '#7ec8e3',
-    glowColor: 'rgba(126, 200, 227, 0.55)',
-    labelBg: 'rgba(232, 246, 255, 0.96)',
-    labelColor: '#0a1830',
   },
 ]

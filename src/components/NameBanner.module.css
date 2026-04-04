@@ -116,16 +116,17 @@
   opacity: 0.85;
   margin: 0;
   white-space: nowrap;
+  font-weight: 1000;
 }
 
 .quote {
   font-family: var(--font-body);
-  font-size: clamp(0.78rem, 1.4vw, 1rem);
-  font-weight: 700;
-  color: rgba(200, 225, 245, 0.75);
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  font-weight: 500;
+  color: rgba(231, 224, 250, 0.75);
   letter-spacing: 0.04em;
   font-style: italic;
-  margin: 2px 0 0;
+  margin: 1px 0 0;
   text-align: center;
   max-width: 28ch;
   line-height: 1.5;
