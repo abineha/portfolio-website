@@ -54,27 +54,23 @@
   flex-shrink: 0;
 }
 
-/* ── Tooltip ─────────────────────────────────────────────────────────────── */
+/* ── Tooltip (fixed — escapes overflow:hidden parents) ───────────────────── */
 .tooltip {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
+  position: fixed;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3px;
   min-width: 180px;
-  max-width: 360px;
+  max-width: min(380px, 50vw);
   background: rgba(6, 12, 44, 0.96);
   border: 1px solid rgba(126, 200, 227, 0.38);
   border-radius: 7px;
-  padding: 8px 12px;
+  padding: 8px 14px;
   text-align: center;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.22s ease;
-  z-index: 20;
+  z-index: 100;
 }
 
 .tooltip::after {
@@ -87,15 +83,13 @@
   border-top-color: rgba(126, 200, 227, 0.38);
 }
 
-.spineWrapper:hover .tooltip {
-  opacity: 1;
-}
-
 .tooltipVenue {
   font-family: var(--font-body);
   font-size: 0.82rem;
   color: rgba(180, 215, 255, 0.88);
   line-height: 1.4;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .tooltipYear {
@@ -206,8 +200,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
-  padding: 38px 0 10px;
+  gap: 6px;
+  padding: 14px 0 4px;
 }
 
 .footnoteLine {
@@ -218,12 +212,12 @@
 
 .footnote p {
   font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
   font-style: italic;
   text-align: center;
   max-width: 540px;
-  line-height: 1.65;
+  line-height: 1.3;
   letter-spacing: 0.02em;
 }
 
@@ -245,8 +239,8 @@
 
 .parchmentCard {
   position: relative;
-  width: min(740px, 92vw);
-  max-height: 88vh;
+  width: min(1000px, 92vw);
+  max-height: 92vh;
   background: rgba(18, 12, 6, 0.97);
   border: 1.5px solid rgba(200, 165, 90, 0.35);
   border-radius: 12px;
@@ -333,19 +327,19 @@
 
 .parchDomain {
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin: 0;
-  opacity: 0.88;
+  opacity: 1;
 }
 
 .parchTitle {
   font-family: var(--font-heading);
-  font-size: clamp(1.05rem, 2.2vw, 1.55rem);
+  font-size: clamp(1.2rem, 2.4vw, 1.75rem);
   font-weight: 700;
-  color: rgba(238, 218, 162, 0.96);
+  color: rgba(248, 232, 185, 1);
   letter-spacing: 0.04em;
   line-height: 1.45;
   text-shadow: 0 0 22px rgba(200, 165, 88, 0.18);
@@ -355,17 +349,17 @@
 
 .parchVenue {
   font-family: var(--font-body);
-  font-size: 0.98rem;
-  color: rgba(195, 175, 125, 0.84);
+  font-size: 1.08rem;
+  color: rgba(215, 198, 155, 0.97);
   font-style: italic;
-  line-height: 1.45;
+  line-height: 1.5;
   margin: 0;
 }
 
 .parchDate {
   font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: rgba(175, 155, 105, 0.68);
+  font-size: 1rem;
+  color: rgba(195, 178, 130, 0.92);
   letter-spacing: 0.08em;
   margin: -4px 0 0;
 }
@@ -390,9 +384,9 @@
 
 .parchSectionLabel {
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 700;
-  color: rgba(200, 165, 90, 0.7);
+  color: rgba(215, 180, 100, 0.97);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin: 0;
@@ -400,8 +394,8 @@
 
 .parchAuthors {
   font-family: var(--font-body);
-  font-size: 1rem;
-  color: rgba(205, 190, 155, 0.85);
+  font-size: 1.08rem;
+  color: rgba(220, 208, 175, 0.97);
   line-height: 1.6;
   margin: 0;
 }
@@ -417,9 +411,9 @@
 
 .parchContribs li {
   font-family: var(--font-body);
-  font-size: 1rem;
-  color: rgba(198, 182, 146, 0.88);
-  line-height: 1.72;
+  font-size: 1.05rem;
+  color: rgba(218, 205, 172, 0.97);
+  line-height: 1.75;
   padding-left: 20px;
   position: relative;
 }

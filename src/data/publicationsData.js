@@ -37,7 +37,7 @@ export const publications = [
       'Integrated edge computing for real-time arrhythmia detection enabling rapid identification of irregular heartbeats without cloud dependency, with edge-based preprocessing using advanced signal processing for noise reduction and waveform analysis.',
       'Conducted performance evaluation of eight curated ML models for signal data detection and classification, identifying the most effective model for high accuracy, low computation time, and minimal false positives.',
     ],
-    link: '',
+    link: 'https://ieeexplore.ieee.org/document/11077348',
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ export const publications = [
       'Normalized trajectories of different lengths using the Douglas-Peucker algorithm and determined optimal cluster count with fuzzy partition coefficients, managing uncertainty and redundancy.',
       'Demonstrated EFTCA significantly outperforms conventional techniques with ARI and FMS values approximately 1.31 times higher, validated using researcher-generated proof-of-concept data.',
     ],
-    link: '',
+    link: 'https://www.sciencedirect.com/science/article/pii/S1877050925009895',
   },
   {
     id: 3,
@@ -74,7 +74,7 @@ export const publications = [
       'Developed ML model using Naive Bayes classifier for efficient classification and prioritization into Arrange, Act, and Assert categories.',
       'Enhanced accuracy by implementing a neural network model for ternary classification ensuring each phase — keyword extraction, repository generation, and classification — was independent and robust.',
     ],
-    link: '',
+    link: 'https://ieeexplore.ieee.org/document/10380221',
   },
   {
     id: 4,
@@ -92,6 +92,6 @@ export const publications = [
       'Conducted comparative study of ethical hacking Linux distributions evaluating Kali Linux, Parrot OS, DEFT Linux, and NodeZero Linux.',
       'Developed an executable with the FatRat tool embedding a malware payload to demonstrate remote system control via user-triggered attacks.',
     ],
-    link: '',
+    link: 'https://www.kzyjc.org/article/an-investigational-approach-for-exploitation-using-client-side-attack',
   },
 ]

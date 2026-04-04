@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import SubPageLayout from '../components/SubPageLayout'
-import { projects, TOTAL_SLOTS, DOMAIN_COLORS, DOMAIN_GLOWS, DOMAIN_LABELS } from '../data/projectsData'
+import { projects, TOTAL_SLOTS, DOMAIN_LABELS, FRAME_PALETTE } from '../data/projectsData'
 import styles from './Projects.module.css'
 
 const isUrl = (v) => typeof v === 'string' && v.startsWith('http')
@@ -22,9 +22,8 @@ function EmptyFrame() {
 }
 
 // ── Project frame ─────────────────────────────────────────────────────────────
-function ProjectFrame({ project, onClick }) {
-  const color      = DOMAIN_COLORS[project.domain]
-  const glow       = DOMAIN_GLOWS[project.domain]
+function ProjectFrame({ project, onClick, paletteIdx, number }) {
+  const { color, glow } = FRAME_PALETTE[paletteIdx % FRAME_PALETTE.length]
   const inProgress = project.status === 'in-progress'
   const sizeClass  = SIZE_CLASS[project.size] || ''
   const isWide     = project.size === 'wide'
@@ -38,6 +37,9 @@ function ProjectFrame({ project, onClick }) {
       tabIndex={0}
       onKeyDown={e => e.key === 'Enter' && onClick()}
     >
+      {/* Frame number label — top-left of moulding */}
+      <span className={styles.frameNum}>#{String(number).padStart(2, '0')}</span>
+
       {/* Corner ornaments on the frame moulding face */}
       <div className={styles.cornerTL} />
       <div className={styles.cornerTR} />
@@ -76,7 +78,7 @@ function ProjectFrame({ project, onClick }) {
 
         {/* Museum nameplate strip */}
         <div className={styles.nameplate}>
-          <span className={styles.nameplateText}>{project.title}</span>
+          <span className={styles.nameplateText}>#{String(number).padStart(2, '0')} · {project.title}</span>
         </div>
       </div>
     </div>
@@ -84,10 +86,15 @@ function ProjectFrame({ project, onClick }) {
 }
 
 // ── Detail overlay ────────────────────────────────────────────────────────────
-function DetailPanel({ project, onClose }) {
-  const [visible, setVisible] = useState(false)
-  const color = DOMAIN_COLORS[project.domain]
-  const glow  = DOMAIN_GLOWS[project.domain]
+function DetailPanel({ project, paletteIdx, onClose }) {
+  const [visible, setVisible]   = useState(false)
+  const [tab, setTab]           = useState('overview')
+  const [slideIdx, setSlideIdx] = useState(0)
+  const { color, glow } = FRAME_PALETTE[paletteIdx % FRAME_PALETTE.length]
+  const media = project.media || []
+
+  const prevSlide = () => setSlideIdx(i => (i - 1 + media.length) % media.length)
+  const nextSlide = () => setSlideIdx(i => (i + 1) % media.length)
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 10)
@@ -121,44 +128,108 @@ function DetailPanel({ project, onClose }) {
         <div className={styles.detailBand} />
         <button className={styles.detailClose} onClick={handleClose} data-sound="close">✕</button>
 
-        <div className={styles.detailBody}>
-          <p className={styles.detailDomain} style={{ color }}>{DOMAIN_LABELS[project.domain]}</p>
-
-          <div className={styles.detailHeader}>
-            <span className={styles.detailIcon}>{project.icon}</span>
-            <h2 className={styles.detailTitle}>{project.title}</h2>
-          </div>
-
-          {project.status === 'in-progress' && (
-            <span className={styles.detailInProgress} style={{ color }}>◉ In Progress</span>
-          )}
-
-          <div className={styles.ornament}><span>◆</span></div>
-
-          <p className={styles.detailSummary}>{project.summary}</p>
-
-          <div className={styles.ornament}><span>◆</span></div>
-
-          <p className={styles.sectionLabel}>Contributions</p>
-          <ul className={styles.detailContribs}>
-            {project.contributions.map((c, i) => <li key={i}>{c}</li>)}
-          </ul>
-
-          <div className={styles.detailTags}>
-            {project.tags.map(t => (
-              <span key={t} className={styles.detailTag} style={{ borderColor: color + '55', color }}>{t}</span>
-            ))}
-          </div>
-
-          {(Object.keys(project.links || {}).length > 0 || project.restricted) && (
-            <div className={styles.detailLinks}>
-              {project.restricted
-                ? <span className={styles.linkRestricted}>🔒 Restricted / Classified</span>
-                : renderLinks()
-              }
-            </div>
-          )}
+        {/* Tab bar */}
+        <div className={styles.tabBar}>
+          <button
+            className={`${styles.tabBtn} ${tab === 'overview' ? styles.tabBtnActive : ''}`}
+            onClick={() => setTab('overview')}
+          >Overview</button>
+          <button
+            className={`${styles.tabBtn} ${tab === 'gallery' ? styles.tabBtnActive : ''}`}
+            onClick={() => setTab('gallery')}
+          >Gallery {media.length > 0 && <span className={styles.tabCount}>{media.length}</span>}</button>
         </div>
+
+        {/* ── Overview tab ── */}
+        {tab === 'overview' && (
+          <div className={styles.detailBody}>
+            <p className={styles.detailDomain} style={{ color }}>{DOMAIN_LABELS[project.domain]}</p>
+
+            <div className={styles.detailHeader}>
+              <span className={styles.detailIcon}>{project.icon}</span>
+              <h2 className={styles.detailTitle}>{project.title}</h2>
+            </div>
+
+            {project.status === 'in-progress' && (
+              <span className={styles.detailInProgress} style={{ color }}>◉ In Progress</span>
+            )}
+
+            <div className={styles.ornament}><span>◆</span></div>
+
+            <p className={styles.detailSummary}>{project.summary}</p>
+
+            <div className={styles.ornament}><span>◆</span></div>
+
+            <p className={styles.sectionLabel}>Contributions</p>
+            <ul className={styles.detailContribs}>
+              {project.contributions.map((c, i) => <li key={i}>{c}</li>)}
+            </ul>
+
+            <div className={styles.detailTags}>
+              {project.tags.map(t => (
+                <span key={t} className={styles.detailTag} style={{ borderColor: color + '55', color }}>{t}</span>
+              ))}
+            </div>
+
+            {(Object.keys(project.links || {}).length > 0 || project.restricted) && (
+              <div className={styles.detailLinks}>
+                {project.restricted
+                  ? <span className={styles.linkRestricted}>🔒 Restricted / Classified</span>
+                  : renderLinks()
+                }
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ── Gallery tab ── */}
+        {tab === 'gallery' && (
+          <div className={styles.slideshow}>
+            {media.length === 0 ? (
+              <div className={styles.galleryEmpty}>
+                <span>📷</span>
+                <p>No media added yet.</p>
+              </div>
+            ) : (
+              <>
+                {/* Main media */}
+                <div className={styles.slideMedia}>
+                  {media[slideIdx].type === 'video'
+                    ? <video key={slideIdx} src={media[slideIdx].src} className={styles.slideImg} controls muted playsInline />
+                    : <img key={slideIdx} src={media[slideIdx].src} alt={media[slideIdx].caption || project.title} className={styles.slideImg} />
+                  }
+                </div>
+
+                {/* Caption + counter */}
+                <div className={styles.slideFooter}>
+                  <p className={styles.slideCaption}>{media[slideIdx].caption || ''}</p>
+                  <span className={styles.slideCounter}>{slideIdx + 1} / {media.length}</span>
+                </div>
+
+                {/* Arrows */}
+                {media.length > 1 && (
+                  <>
+                    <button className={`${styles.slideArrow} ${styles.slideArrowL}`} onClick={prevSlide}>‹</button>
+                    <button className={`${styles.slideArrow} ${styles.slideArrowR}`} onClick={nextSlide}>›</button>
+                  </>
+                )}
+
+                {/* Dot indicators */}
+                {media.length > 1 && (
+                  <div className={styles.slideDots}>
+                    {media.map((_, i) => (
+                      <button
+                        key={i}
+                        className={`${styles.slideDot} ${i === slideIdx ? styles.slideDotActive : ''}`}
+                        onClick={() => setSlideIdx(i)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -175,20 +246,20 @@ export default function Projects() {
 
   return (
     <>
-      <SubPageLayout title="Projects showcase" wide>
+      <SubPageLayout title="Projects" wide>
         <div className={styles.galleryWall}>
           <div className={styles.grid}>
-            {slots.map(p =>
+            {slots.map((p, idx) =>
               p.status === 'empty'
                 ? <EmptyFrame key={p.id} />
-                : <ProjectFrame key={p.id} project={p} onClick={() => setOpenProject(p)} />
+                : <ProjectFrame key={p.id} project={p} onClick={() => setOpenProject({ project: p, paletteIdx: idx })} paletteIdx={idx} number={idx + 1} />
             )}
           </div>
         </div>
       </SubPageLayout>
 
       {openProject && (
-        <DetailPanel project={openProject} onClose={() => setOpenProject(null)} />
+        <DetailPanel project={openProject.project} paletteIdx={openProject.paletteIdx} onClose={() => setOpenProject(null)} />
       )}
     </>
   )

@@ -13,7 +13,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: 160px;
+  grid-auto-rows: 235px;
   gap: 14px;
   grid-auto-flow: dense;
 }
@@ -77,17 +77,34 @@
 
 /* ── Inner canvas (the artwork inside the frame) ─────────────────────────── */
 .frameInner {
-  background: color-mix(in srgb, var(--fc, #7ec8e3) 22%, rgba(5, 10, 40, 0.97));
+  background: color-mix(in srgb, var(--fc, #7ec8e3) 16%, rgba(242, 246, 255, 0.97));
   border-radius: 2px;
-  /* Inset shadow — adds depth like real frame rabbet */
+  /* Soft inset shadow — adds depth like real frame rabbet */
   box-shadow:
-    inset 1px 1px 8px rgba(0, 0, 0, 0.75),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.6);
+    inset 1px 1px 10px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px color-mix(in srgb, var(--fc, #7ec8e3) 28%, rgba(200, 215, 245, 0.55));
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   min-height: 0;
+}
+
+/* ── Frame number label ──────────────────────────────────────────────────── */
+.frameNum {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  z-index: 5;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.58);
+  border-radius: 4px;
+  padding: 3px 8px;
+  pointer-events: none;
 }
 
 /* ── Ornate corner ornaments (on the moulding face) ─────────────────────── */
@@ -228,19 +245,21 @@
 
 .frameDomain {
   font-family: var(--font-body);
-  font-size: 0.68rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   margin: 0;
-  opacity: 0.88;
+  opacity: 1;
+  filter: brightness(0.78) saturate(1.4);
 }
 
 .frameTitle {
   font-family: var(--font-heading);
-  font-size: 0.9rem;
-  color: var(--color-white-soft);
-  letter-spacing: 0.05em;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: rgba(14, 20, 62, 0.92);
+  letter-spacing: 0.04em;
   line-height: 1.3;
   margin: 0;
   display: -webkit-box;
@@ -251,8 +270,9 @@
 
 .frameSummary {
   font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: rgba(190, 215, 255, 0.72);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(30, 42, 90, 0.76);
   line-height: 1.45;
   margin: 0;
   display: -webkit-box;
@@ -264,8 +284,8 @@
 .frameTags {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 2px;
+  gap: 5px;
+  margin-top: 3px;
 }
 
 .canvas:not(.canvasWide) .frameTags {
@@ -274,21 +294,20 @@
 
 .tag {
   font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--fc, #7ec8e3);
-  background: rgba(4, 8, 28, 0.75);
-  border: 1px solid var(--fc, #7ec8e3);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(14, 22, 68, 0.88);
+  background: color-mix(in srgb, var(--fc, #7ec8e3) 38%, rgba(255, 255, 255, 0.88));
+  border: 2px solid color-mix(in srgb, var(--fc, #7ec8e3) 78%, rgba(100, 130, 200, 0.6));
   border-radius: 3px;
-  padding: 2px 7px;
+  padding: 3px 8px;
   letter-spacing: 0.03em;
-  opacity: 0.85;
 }
 
 /* ── Nameplate ───────────────────────────────────────────────────────────── */
 .nameplate {
-  border-top: 1px solid rgba(160, 200, 255, 0.12);
-  background: rgba(3, 6, 22, 0.7);
+  border-top: 1px solid color-mix(in srgb, var(--fc, #7ec8e3) 32%, rgba(200, 215, 245, 0.4));
+  background: color-mix(in srgb, var(--fc, #7ec8e3) 20%, rgba(220, 232, 255, 0.82));
   padding: 5px 10px;
   display: flex;
   align-items: center;
@@ -298,13 +317,15 @@
 
 .nameplateText {
   font-family: var(--font-body);
-  font-size: 0.68rem;
-  color: rgba(160, 200, 255, 0.5);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(14, 22, 68, 0.72);
   letter-spacing: 0.1em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 /* ── Detail overlay ──────────────────────────────────────────────────────── */
@@ -325,8 +346,9 @@
 
 .detailCard {
   position: relative;
-  width: min(780px, 92vw);
-  max-height: 88vh;
+  width: min(1100px, 95vw);
+  height: 82vh;
+  max-height: 82vh;
   background: rgba(5, 10, 42, 0.98);
   border: 2px solid var(--fc, #7ec8e3);
   border-radius: 6px;
@@ -373,7 +395,7 @@
 
 .detailClose {
   position: absolute;
-  top: 12px;
+  top: 10px;
   right: 14px;
   z-index: 3;
   background: rgba(126, 200, 227, 0.08);
@@ -395,6 +417,53 @@
   color: rgba(255, 175, 155, 0.95);
 }
 
+/* ── Tab bar ─────────────────────────────────────────────────────────────── */
+.tabBar {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(160, 200, 255, 0.14);
+  flex-shrink: 0;
+  padding-right: 58px; /* leave room for the X button */
+}
+
+.tabBtn {
+  flex: 1;
+  padding: 15px 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(160, 200, 255, 0.5);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.tabBtn:hover {
+  color: rgba(200, 225, 255, 0.8);
+}
+
+.tabBtnActive {
+  color: var(--fc, #7ec8e3);
+  border-bottom-color: var(--fc, #7ec8e3);
+}
+
+.tabCount {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--fc, #7ec8e3);
+  color: rgba(5, 10, 40, 0.92);
+  border-radius: 10px;
+  padding: 1px 7px;
+}
+
+/* ── Detail body ─────────────────────────────────────────────────────────── */
 .detailBody {
   display: flex;
   flex-direction: column;
@@ -570,4 +639,138 @@
   color: rgba(160, 200, 255, 0.48);
   font-style: italic;
   letter-spacing: 0.04em;
+}
+
+/* ── Gallery slideshow ───────────────────────────────────────────────────── */
+.slideshow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 60px 14px;
+  position: relative;
+  gap: 12px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.slideMedia {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.slideImg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+}
+
+.slideFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.slideCaption {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(180, 210, 255, 0.72);
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.slideCounter {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  color: rgba(160, 200, 255, 0.45);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.slideArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(5, 10, 42, 0.72);
+  border: 1px solid var(--fc, #7ec8e3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: var(--fc, #7ec8e3);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+  z-index: 2;
+}
+
+.slideArrow:hover {
+  background: color-mix(in srgb, var(--fc, #7ec8e3) 22%, rgba(5, 10, 42, 0.9));
+}
+
+.slideArrowL { left: 12px; }
+.slideArrowR { right: 12px; }
+
+.slideDots {
+  display: flex;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.slideDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(160, 200, 255, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.slideDotActive {
+  background: var(--fc, #7ec8e3);
+  transform: scale(1.3);
+}
+
+.galleryEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 0;
+  color: rgba(160, 200, 255, 0.4);
+  font-family: var(--font-body);
+}
+
+.galleryEmpty span { font-size: 2.4rem; }
+.galleryEmpty p    { font-size: 0.92rem; margin: 0; }
+
+.galleryHint {
+  font-size: 0.78rem !important;
+  color: rgba(160, 200, 255, 0.28) !important;
+  font-style: italic;
+}
+
+.galleryHint code {
+  font-size: 0.76rem;
+  background: rgba(160, 200, 255, 0.08);
+  border-radius: 3px;
+  padding: 1px 5px;
 }

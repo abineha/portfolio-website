@@ -18,19 +18,17 @@ function chunkRows(arr, size) {
  *   <img src="/assets/books/spine-[id]-hover.png" />  (hover)
  *   Recommended size: ~58×300px transparent PNG, domain colour as background
  */
-function BookSpine({ pub, onClick }) {
+function BookSpine({ pub, onClick, onHover, onLeave }) {
   const color = DOMAIN_COLORS[pub.domain]
   const glow  = DOMAIN_GLOWS[pub.domain]
-  const year  = pub.date.split(' ').at(-1)
-  const shortVenue = pub.venue.replace(/\s*\(.*?\)/g, '').trim()
 
   return (
-    <div className={styles.spineWrapper} onClick={onClick}>
-      <div className={styles.tooltip}>
-        <span className={styles.tooltipVenue}>{shortVenue}</span>
-        <span className={styles.tooltipYear}>{year}</span>
-      </div>
-
+    <div
+      className={styles.spineWrapper}
+      onClick={onClick}
+      onMouseEnter={e => onHover(pub, e.currentTarget.getBoundingClientRect())}
+      onMouseLeave={onLeave}
+    >
       <div className={styles.spine} style={{ '--spine-color': color, '--spine-glow': glow }}>
         <span className={styles.spineTitle}>{pub.title}</span>
         <div className={styles.spineFooter}>
@@ -103,11 +101,18 @@ function ParchmentCard({ pub, onClose }) {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function Publications() {
   const [openPub, setOpenPub] = useState(null)
+  const [hovered, setHovered] = useState(null) // { pub, rect }
   const rows = chunkRows(publications, BOOKS_PER_ROW)
+
+  const handleHover = (pub, rect) => {
+    const shortVenue = pub.venue.replace(/\s*\(.*?\)/g, '').trim()
+    const year = pub.date.split(' ').at(-1)
+    setHovered({ shortVenue, year, rect })
+  }
 
   return (
     <>
-      <SubPageLayout title="Publications Library" wide>
+      <SubPageLayout title="Publications" wide>
         <div className={styles.library}>
 
           {rows.map((rowBooks, rowIdx) => (
@@ -115,7 +120,13 @@ export default function Publications() {
               {/* TODO: Replace shelfRow::after plank with hand-drawn wood art */}
               <div className={styles.booksRow}>
                 {rowBooks.map(pub => (
-                  <BookSpine key={pub.id} pub={pub} onClick={() => setOpenPub(pub)} />
+                  <BookSpine
+                    key={pub.id}
+                    pub={pub}
+                    onClick={() => setOpenPub(pub)}
+                    onHover={handleHover}
+                    onLeave={() => setHovered(null)}
+                  />
                 ))}
               </div>
             </div>
@@ -124,8 +135,7 @@ export default function Publications() {
           <div className={styles.footnote}>
             <div className={styles.footnoteLine} />
             <p>
-              Research conducted under the mentorship of dedicated supervisors —
-              exploring creative experiments to validate ideas at the frontier of computer science.
+              Research conducted under the mentorship of dedicated supervisors
             </p>
           </div>
 
@@ -134,6 +144,21 @@ export default function Publications() {
 
       {/* Rendered outside SubPageLayout so it isn't clipped by the panel's backdrop-filter */}
       {openPub && <ParchmentCard pub={openPub} onClose={() => setOpenPub(null)} />}
+
+      {/* Fixed tooltip — escapes overflow:hidden on SubPageLayout */}
+      {hovered && (
+        <div
+          className={styles.tooltip}
+          style={{
+            left: hovered.rect.left + hovered.rect.width / 2,
+            top: hovered.rect.top - 10,
+            transform: 'translateX(-50%) translateY(-100%)',
+          }}
+        >
+          <span className={styles.tooltipVenue}>{hovered.shortVenue}</span>
+          <span className={styles.tooltipYear}>{hovered.year}</span>
+        </div>
+      )}
     </>
   )
 }

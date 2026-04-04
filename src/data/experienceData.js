@@ -7,7 +7,7 @@ export const experienceData = [
     dateEnd: 'Mar 2026',
     location: 'Manchester, UK',
     summary:
-      'Strategy consultant on a live industry project for a UK sports-tech startup preparing for angel investment — delivering market research and competitive analysis for international expansion.',
+      'Strategy consultant on a live industry project for a UK sports-tech startup preparing for angel investment, delivering market research and competitive analysis for international expansion.',
     achievements: [
       'Built end-to-end Python data pipeline scraping thousands of real-time competitor app reviews with NLP sentiment scoring and keyword classification for actionable market insights.',
       'Conducted 9-country unmet needs analysis combining desk research, user review data, and community forum analysis to identify priority expansion markets.',
@@ -17,8 +17,8 @@ export const experienceData = [
     tags: ['Python', 'NLP', 'Market Research', 'Strategy'],
   },
   {
-    title: 'Engineering Intern',
-    org: 'Adapt.io',
+    title: 'Product & Engineering Intern',
+    org: 'Adapt.io, Saleslift Technologies Private Limited',
     type: 'engineering',
     dateStart: 'Jan 2025',
     dateEnd: 'Mar 2025',
@@ -34,7 +34,7 @@ export const experienceData = [
   },
   {
     title: 'Project Intern (AI Research)',
-    org: 'Lam Research',
+    org: 'LAM Research, Fremont, CA, USA',
     type: 'research',
     dateStart: 'Aug 2023',
     dateEnd: 'Oct 2023',

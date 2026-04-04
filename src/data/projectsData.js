@@ -1,3 +1,12 @@
+// ── 5-colour cycling palette for frame mouldings ─────────────────────────────
+export const FRAME_PALETTE = [
+  { color: '#7ec8e3', glow: 'rgba(126, 200, 227, 0.52)' },  // sky blue
+  { color: '#f0c060', glow: 'rgba(240, 192, 96,  0.52)' },  // golden
+  { color: '#88dbb8', glow: 'rgba(136, 219, 184, 0.52)' },  // mint
+  { color: '#c4a8f0', glow: 'rgba(196, 168, 240, 0.52)' },  // lavender
+  { color: '#f0a8c0', glow: 'rgba(240, 168, 192, 0.52)' },  // rose
+]
+
 export const DOMAIN_COLORS = {
   engineering:   '#f0c060',
   'ai-ml':       '#7ec8e3',
@@ -23,6 +32,8 @@ export const TOTAL_SLOTS = 22
 
 // size: 'large' (2col×2row) | 'wide' (2col×1row) | 'tall' (1col×2row) | 'small' (1col×1row)
 // Ordered newest first. Add future projects at the top.
+// media (optional): array of { type: 'image'|'video', src: '/assets/projects/...' , caption: '' }
+//   e.g.  media: [{ type: 'image', src: '/assets/projects/cardioguard-1.png', caption: 'ECG signal pipeline' }]
 export const projects = [
   {
     id: 1,
@@ -51,6 +62,12 @@ export const projects = [
     ],
     tags: ['JavaScript', 'HTML/CSS', 'Hugging Face', 'NLP'],
     links: { github: 'https://github.com/abineha/TLDR-Extension' },
+    media: [
+  { type: 'image', src: '/assets/projects/2_1.png', caption: 'TLDR Chrome Extension - AI-Powered Text Summarizer' },
+  { type: 'image', src: '/assets/projects/2_2.png', caption: 'Settings page where API connection is established' },
+  { type: 'image', src: '/assets/projects/2_3.png', caption: 'Main popup of chrome extension to summarize highlighted paragraph' },
+  { type: 'image', src: '/assets/projects/2_4.png', caption: 'Mode Comparison' },
+]
   },
   {
     id: 3,
@@ -71,6 +88,14 @@ export const projects = [
     ],
     tags: ['Python', 'TensorFlow', 'C++', 'Embedded Systems', 'CNN'],
     links: { github: 'https://github.com/abineha/CardioGuard' },
+    media: [
+  { type: 'image', src: '/assets/projects/3_1.png', caption: 'CardioGuard Architecture for Arrhythmia Detection and Notification.' },
+  { type: 'image', src: '/assets/projects/3_2.png', caption: 'Training Performance of Different Models' },
+  { type: 'image', src: '/assets/projects/3_3.png', caption: 'Poster for CardioGuard' },
+  { type: 'image', src: '/assets/projects/3_4.png', caption: 'Block diagram of the proposed CardioGuard device' },
+  { type: 'image', src: '/assets/projects/3_5.png', caption: 'Open top view of CardioGuard device prototype' },
+  { type: 'image', src: '/assets/projects/3_6.png', caption: 'Closed top view of CardioGuard device prototype' },
+]
   },
   {
     id: 4,
@@ -91,6 +116,10 @@ export const projects = [
     tags: ['Python', 'Data Analysis', 'Node.js', 'Visualisation'],
     links: {},
     restricted: true,
+    media: [  
+      { type: 'image', src: '/assets/projects/4_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/4_2.png', caption: '# 2' },
+]
   },
   {
     id: 5,
@@ -107,6 +136,9 @@ export const projects = [
     ],
     tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Sentry', 'JWT'],
     links: { github: 'https://github.com/abineha/hospitalticketsystem' },
+    media: [  
+      { type: 'image', src: '/assets/projects/5_1.png', caption: '# 1' },
+    ]
   },
   {
     id: 6,
@@ -124,6 +156,17 @@ export const projects = [
     ],
     tags: ['Python', 'PyTorch', 'Computer Vision', 'Deep Learning'],
     links: { github: 'https://github.com/abineha/Geo-Localization' },
+    media: [
+  { type: 'image', src: '/assets/projects/6_1.png', caption: '# 1' },
+  { type: 'image', src: '/assets/projects/6_2.png', caption: '# 2' },
+  { type: 'image', src: '/assets/projects/6_3.png', caption: '# 3' },
+  { type: 'image', src: '/assets/projects/6_4.png', caption: '# 4' },
+  { type: 'image', src: '/assets/projects/6_5.png', caption: '# 5' },
+  { type: 'image', src: '/assets/projects/6_6.png', caption: '# 6' },
+  { type: 'image', src: '/assets/projects/6_7.png', caption: '# 7' },
+  { type: 'image', src: '/assets/projects/6_8.png', caption: '# 8' },
+  { type: 'image', src: '/assets/projects/6_9.png', caption: '# 9' },
+]
   },
   {
     id: 7,
@@ -142,6 +185,11 @@ export const projects = [
     ],
     tags: ['Python', 'Algorithms', 'Matplotlib'],
     links: { github: 'https://github.com/abineha/Chess-optimal-moves-simulation' },
+    media: [  
+      { type: 'image', src: '/assets/projects/7_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/7_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/7_3.png', caption: '# 3' },
+    ]
   },
   {
     id: 8,
@@ -158,6 +206,12 @@ export const projects = [
     ],
     tags: ['Java', 'libGDX', 'Game Dev', 'OOP'],
     links: { github: 'https://github.com/abineha/pacman-libgdx-og' },
+    media: [
+      { type: 'image', src: '/assets/projects/8_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/8_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/8_3.png', caption: '# 3' },
+      { type: 'image', src: '/assets/projects/8_4.png', caption: '# 4' },
+    ]
   },
   {
     id: 9,
@@ -174,6 +228,12 @@ export const projects = [
     ],
     tags: ['C', 'Game Dev', 'Data Structures'],
     links: { github: 'https://github.com/abineha/Battleship-Game' },
+    media: [
+      { type: 'image', src: '/assets/projects/9_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/9_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/9_3.png', caption: '# 3' },
+      { type: 'image', src: '/assets/projects/9_4.png', caption: '# 4' },
+    ]
   },
   {
     id: 10,
@@ -223,6 +283,11 @@ export const projects = [
     ],
     tags: ['Python', 'Automation', 'Web Scraping'],
     links: { github: 'https://github.com/abineha/NHS-job-alert-system' },
+    media: [
+      { type: 'image', src: '/assets/projects/12_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/12_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/12_3.jpeg', caption: '# 3' },
+    ]
   },
   {
     id: 13,
@@ -231,7 +296,7 @@ export const projects = [
     domain: 'ai-ml',
     size: 'tall',
     icon: '🏊',
-    summary: 'Competitive intelligence report for Practera analysing 2,576 user reviews across 7 swimming apps, using a full NLP pipeline built from scratch with sentiment scoring, theme classification, and 16 publication-ready charts.',
+    summary: 'Competitive intelligence report for  analysing 2,576 user reviews across 7 swimming apps, using a full NLP pipeline built from scratch with sentiment scoring, theme classification, and 16 publication-ready charts.',
     contributions: [
       'Scraped 2,767 raw reviews from Apple App Store, Google Play, and Reddit (r/swimming, r/triathlon, r/openwater) across 7 competing apps, deduplicated to 2,576 clean records.',
       'Built a full NLP pipeline: VADER-based compound sentiment scoring, positive/negative/neutral labelling, and multi-label binary theme classification across 7 need categories.',

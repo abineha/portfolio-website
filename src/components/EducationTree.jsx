@@ -12,12 +12,11 @@ const NODES = {
     label: ['Yuvabharathi', 'Public School'],
     inProgress: false,
     title: 'Yuvabharathi Public School',
-    period: 'Graduated 2021',
-    badge: '94.2%',
+    period: 'Graduated: 2021',
+    badge: 'Grade: 94.2%',
     bullets: [
       'Developed strong foundation in science and mathematics',
       'Core subjects: Maths, Information Systems, Physics, Chemistry',
-      'Chose engineering route based on academic interest',
     ],
   },
   amrita: {
@@ -28,12 +27,12 @@ const NODES = {
     subtitle: 'B.Tech in Computer Science and Engineering',
     subtitleW: 282,
     inProgress: false,
-    title: 'Amrita Vishwa Vidyapeetham',
+    title: 'Amrita Vishwa Vidyapeetham, Coimbatore',
     period: 'Oct 2021 – Jun 2025',
-    badge: '8.84 / 10',
+    badge: 'CGPA: 8.84 / 10',
     bullets: [
-      'B.Tech Computer Science — First Class with Distinction',
-      'CGPA: 8.84 / 10',
+      'B.Tech in Computer Science and Engineering',
+      'First Class with Distinction',
     ],
   },
   community: {
@@ -73,12 +72,12 @@ const NODES = {
     labelAbove: true,
     label: ['Academic'],
     inProgress: false,
-    title: 'Academic Excellence',
+    title: 'Course Modules',
     period: '2021 – 2025',
     badge: '8.84 / 10',
     bullets: [
-      'First Class with Distinction',
-      'Consistent high performance throughout all semesters',
+      'Database Management and Systems,  Object Oriented Paradigm, Data Structure and Algorithms, Operating Systems, Theroy of Computation, Computer Networks',
+      'Neural Networks and Deep Learning, Compiler Design, Real-Time Systems, Software Engineering, Computer Security',
     ],
   },
   industry: {
@@ -109,8 +108,8 @@ const NODES = {
     period: 'Sep 2025 – Sep 2026',
     badge: 'IN PROGRESS',
     bullets: [
-      'MSc Advanced Computer Science',
-      'Manchester, United Kingdom',
+      'MSc in Advanced Computer Science',
+      'Term-1 Cumulative GPA: 75.5 / 100',
     ],
   },
   scholarship: {
@@ -119,12 +118,12 @@ const NODES = {
     labelAbove: false,
     label: ['Scholarship'],
     inProgress: true,
-    title: 'Global Futures Scholarship',
-    period: '£8,000 Award',
+    title: 'Scholarship',
+    period: '2025 – 2026',
     badge: '£8,000',
     bullets: [
       'Awarded the Global Futures Scholarship (£8,000)',
-      'Granted for outstanding academic merit',
+      'Student Ambassador for UoM (2025-2026)',
     ],
   },
   modules: {
@@ -137,10 +136,10 @@ const NODES = {
     period: '2025 – 2026',
     badge: null,
     bullets: [
-      'Data Engineering Concepts',
-      'Formal Methods for Software Verification',
-      'Secure Computer Architecture and Systems',
-      'Cognitive Robotics and Computer Vision',
+      'Data Engineering Concepts and Data Engineering Technologies',
+      'Formal Methods for Software Verification, Security and Computer Science, Software Security',
+      'Secure Computer Architecture and Systems, Security and Privacy in AI',
+      'Cognitive Robotics and Computer Vision, Transforming Text into Meaning',
     ],
   },
   project: {
