@@ -100,7 +100,14 @@ function PlayerCard({ piece, onClose }) {
             ? piece.type === 'audio'
               ? (
                 <div className={styles.audioWrap}>
-                  <audio src={piece.src} controls className={styles.audio} />
+                  <audio
+                    src={piece.src}
+                    controls
+                    className={styles.audio}
+                    onPlay={duck}
+                    onPause={unduck}
+                    onEnded={unduck}
+                  />
                 </div>
               )
               : <video
@@ -159,7 +166,7 @@ export default function MusicStuff() {
         </div>
       </SubPageLayout>
 
-      {open && <PlayerCard piece={open} onClose={() => setOpen(null)} />}
+      {open && <PlayerCard key={open.id} piece={open} onClose={() => setOpen(null)} />}
     </>
   )
 }
