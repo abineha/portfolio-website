@@ -272,11 +272,11 @@ function ContactContent() {
         </li>
         <li className={styles.contactItem}>
           <span className={styles.contactIcon}>R</span>
-          <a href="https://drive.google.com/file/d/1cY5w7nUpOklz5TQmq1i2YSwelmuevAOP/view?usp=sharing" target="_blank" rel="noreferrer" className={styles.link}>View Résumé</a>
+          <a href="https://drive.google.com/file/d/1HUpXz80P2k_kQYdchBlt192CKboY6u4x/view?usp=sharing" target="_blank" rel="noreferrer" className={styles.link}>View Résumé</a>
         </li>
         <li className={styles.contactItem}>
           <span className={styles.contactIcon}>W</span>
-          <span className={styles.linkDisabled}>Portfolio — coming soon</span>
+          <a href="https://abineha.vercel.app" target="_blank" rel="noreferrer" className={styles.link}>abineha.vercel.app</a>
         </li>
       </ul>
 
