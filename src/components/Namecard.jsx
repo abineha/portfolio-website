@@ -167,23 +167,20 @@ function AboutContent() {
       <div className={styles.aboutScroll}>
         <div className={styles.aboutSection}>
           <p className={styles.sectionLabel}>◈ Hello World!</p>
-          <p className={styles.cardText}>
-  I build real-world systems by working closely with the people who face the problem, from clinicians and hospital teams to engineers and operational staff, and translating their needs into deployable solutions.
-</p>
-<br></br>
-<p className={styles.cardText}>
-  My approach focuses on understanding workflows, identifying bottlenecks, and delivering end-to-end systems that are actually usable, spanning data, models, interfaces, and deployment rather than isolated prototypes.
-</p>
-<br></br>
-<p className={styles.cardText}>
-  I have applied this across healthcare and operations, including developing a real-time ECG arrhythmia detection system with cardiologists, building a hospital ticketing dashboard to streamline issue tracking, and partnering with the Indian Air Force to analyse and visualise 30,000+ equipment test records for faster decision-making.
-</p>
-<br></br>
-<p className={styles.cardText}>
-  Outside of these systems, I enjoy building and experimenting across different domains, from AI-driven tools to game-inspired projects, and I am currently exploring AI agents and Algorithmic Game Theory.
-</p>
-<br></br>
-        
+          <div className={styles.bioParas}>
+            <p className={styles.cardText}>
+              I build real-world systems by working closely with the people who face the problem, from clinicians and hospital teams to engineers and operational staff, and translating their needs into deployable solutions.
+            </p>
+            <p className={styles.cardText}>
+              My approach focuses on understanding workflows, identifying bottlenecks, and delivering end-to-end systems that are actually usable, spanning data, models, interfaces, and deployment rather than isolated prototypes.
+            </p>
+            <p className={styles.cardText}>
+              I have applied this across healthcare and operations, including developing a real-time ECG arrhythmia detection system with cardiologists, building a hospital ticketing dashboard to streamline issue tracking, and partnering with the Indian Air Force to analyse and visualise 30,000+ equipment test records for faster decision-making.
+            </p>
+            <p className={styles.cardText}>
+              Outside of these systems, I enjoy building and experimenting across different domains, from AI-driven tools to game-inspired projects, and I am currently exploring AI agents and Algorithmic Game Theory.
+            </p>
+          </div>
         </div>
 
         <div className={styles.aboutSection}>
@@ -200,7 +197,7 @@ function AboutContent() {
             <span className={styles.hobbyItem}>📖 Reading</span>
           </div>
         </div>
-<br></br>
+
         <div className={styles.aboutSection}>
           <p className={styles.sectionLabel}>◈ Currently</p>
           <p className={styles.questText}>

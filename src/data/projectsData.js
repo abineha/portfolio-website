@@ -14,13 +14,6 @@ export const DOMAIN_COLORS = {
   cybersecurity: '#c4a8f0',
 }
 
-export const DOMAIN_GLOWS = {
-  engineering:   'rgba(240, 192, 96, 0.5)',
-  'ai-ml':       'rgba(126, 200, 227, 0.5)',
-  tools:         'rgba(136, 219, 184, 0.5)',
-  cybersecurity: 'rgba(196, 168, 240, 0.5)',
-}
-
 export const DOMAIN_LABELS = {
   engineering:   'Engineering',
   'ai-ml':       'AI / ML',
@@ -117,8 +110,8 @@ export const projects = [
     links: {},
     restricted: true,
     media: [  
-      { type: 'image', src: '/assets/projects/4_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/4_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/4_1.png', caption: 'Initial Screen to display clean and unclean data' },
+      { type: 'image', src: '/assets/projects/4_2.png', caption: 'Data Filtering Options' },
 ]
   },
   {
@@ -137,7 +130,7 @@ export const projects = [
     tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Sentry', 'JWT'],
     links: { github: 'https://github.com/abineha/hospitalticketsystem' },
     media: [  
-      { type: 'image', src: '/assets/projects/5_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/5_1.png', caption: 'Dashboard of submitted tickets' },
     ]
   },
   {
@@ -157,15 +150,15 @@ export const projects = [
     tags: ['Python', 'PyTorch', 'Computer Vision', 'Deep Learning'],
     links: { github: 'https://github.com/abineha/Geo-Localization' },
     media: [
-  { type: 'image', src: '/assets/projects/6_1.png', caption: '# 1' },
-  { type: 'image', src: '/assets/projects/6_2.png', caption: '# 2' },
-  { type: 'image', src: '/assets/projects/6_3.png', caption: '# 3' },
-  { type: 'image', src: '/assets/projects/6_4.png', caption: '# 4' },
-  { type: 'image', src: '/assets/projects/6_5.png', caption: '# 5' },
-  { type: 'image', src: '/assets/projects/6_6.png', caption: '# 6' },
-  { type: 'image', src: '/assets/projects/6_7.png', caption: '# 7' },
-  { type: 'image', src: '/assets/projects/6_8.png', caption: '# 8' },
-  { type: 'image', src: '/assets/projects/6_9.png', caption: '# 9' },
+  { type: 'image', src: '/assets/projects/6_1.png', caption: 'ResNet50 Model Architecture' },
+  { type: 'image', src: '/assets/projects/6_2.png', caption: 'Training Layers' },
+  { type: 'image', src: '/assets/projects/6_3.png', caption: 'Classification of Negatives' },
+  { type: 'image', src: '/assets/projects/6_4.png', caption: 'Learning Process' },
+  { type: 'image', src: '/assets/projects/6_5.png', caption: 'Loss of a triplet' },
+  { type: 'image', src: '/assets/projects/6_6.png', caption: 'Triplet Conditions' },
+  { type: 'image', src: '/assets/projects/6_7.png', caption: 'Channel Attention' },
+  { type: 'image', src: '/assets/projects/6_8.png', caption: 'Mappings' },
+  { type: 'image', src: '/assets/projects/6_9.png', caption: 'Feature Mappings' },
 ]
   },
   {
@@ -186,9 +179,9 @@ export const projects = [
     tags: ['Python', 'Algorithms', 'Matplotlib'],
     links: { github: 'https://github.com/abineha/Chess-optimal-moves-simulation' },
     media: [  
-      { type: 'image', src: '/assets/projects/7_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/7_2.png', caption: '# 2' },
-      { type: 'image', src: '/assets/projects/7_3.png', caption: '# 3' },
+      { type: 'image', src: '/assets/projects/7_1.png', caption: 'Simulation of chess openings' },
+      { type: 'image', src: '/assets/projects/7_2.png', caption: 'User vs AI Gameplay' },
+      { type: 'image', src: '/assets/projects/7_3.png', caption: 'Graph algorithm of each chess piece' },
     ]
   },
   {
@@ -207,10 +200,10 @@ export const projects = [
     tags: ['Java', 'libGDX', 'Game Dev', 'OOP'],
     links: { github: 'https://github.com/abineha/pacman-libgdx-og' },
     media: [
-      { type: 'image', src: '/assets/projects/8_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/8_2.png', caption: '# 2' },
-      { type: 'image', src: '/assets/projects/8_3.png', caption: '# 3' },
-      { type: 'image', src: '/assets/projects/8_4.png', caption: '# 4' },
+      { type: 'image', src: '/assets/projects/8_1.png', caption: 'Pac-Man Game Screen' },
+      { type: 'image', src: '/assets/projects/8_2.png', caption: 'Board Layout to implement collision detection' },
+      { type: 'image', src: '/assets/projects/8_3.png', caption: 'code for collision detection' },
+      { type: 'image', src: '/assets/projects/8_4.png', caption: '(x,y) coordinates collision points' },
     ]
   },
   {
@@ -229,10 +222,10 @@ export const projects = [
     tags: ['C', 'Game Dev', 'Data Structures'],
     links: { github: 'https://github.com/abineha/Battleship-Game' },
     media: [
-      { type: 'image', src: '/assets/projects/9_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/9_2.png', caption: '# 2' },
-      { type: 'image', src: '/assets/projects/9_3.png', caption: '# 3' },
-      { type: 'image', src: '/assets/projects/9_4.png', caption: '# 4' },
+      { type: 'image', src: '/assets/projects/9_1.png', caption: '2 game modes' },
+      { type: 'image', src: '/assets/projects/9_2.png', caption: 'Game board layout' },
+      { type: 'image', src: '/assets/projects/9_3.png', caption: 'Ship placement validation' },
+      { type: 'image', src: '/assets/projects/9_4.png', caption: 'Display of ship lol ' },
     ]
   },
   {
@@ -292,19 +285,19 @@ export const projects = [
     domain: 'tools',
     size: 'small',
     icon: '🔔',
-    summary: 'A production-grade job monitoring system built to solve a real problem for UK job search.',
+    summary: 'Monitors 1,500+ NHS job listing pages and sends real-time Telegram alerts when matching roles appear.',
     contributions: [
       'Designed a scalable scraping system across 1,500+ pages with intelligent sampling.',
       'Implemented deduplication and filtering to avoid redundant alerts.',
-      'Delivered real-time Telegram notifications with multi-user support.',
+      'Delivered real-time Telegram notifications with multi-user support and telegram bots.',
       'Built robust scraping with fallback selectors and logging.',
     ],
     tags: ['Python', 'Automation', 'Web Scraping'],
     links: { github: 'https://github.com/abineha/NHS-job-alert-system' },
     media: [
-      { type: 'image', src: '/assets/projects/12_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/12_2.png', caption: '# 2' },
-      { type: 'image', src: '/assets/projects/12_3.jpeg', caption: '# 3' },
+      { type: 'image', src: '/assets/projects/12_1.png', caption: 'code to ethically scrap NHS job listings' },
+      { type: 'image', src: '/assets/projects/12_2.png', caption: 'notification alert mechanism' },
+      { type: 'image', src: '/assets/projects/12_3.jpeg', caption: 'Telegram notification on immediate job posting' },
     ]
   },
   {
@@ -324,11 +317,11 @@ export const projects = [
     tags: ['Python', 'NLP', 'VADER', 'Web Scraping'],
     links: { github: 'https://github.com/abineha/swim_apps_research' },
     media: [
-      { type: 'image', src: '/assets/projects/13_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/13_2.png', caption: '# 2' },
-      { type: 'image', src: '/assets/projects/13_3.png', caption: '# 3' },
-      { type: 'image', src: '/assets/projects/13_4.png', caption: '# 4' },
-      { type: 'image', src: '/assets/projects/13_5.png', caption: '# 5' },
+      { type: 'image', src: '/assets/projects/13_1.png', caption: 'Top-Level Findings' },
+      { type: 'image', src: '/assets/projects/13_2.png', caption: 'Sources Scraped for user reviews' },
+      { type: 'image', src: '/assets/projects/13_3.png', caption: 'Classification of Swimmer Needs' },
+      { type: 'image', src: '/assets/projects/13_4.png', caption: 'Analysis of Unmet Needs' },
+      { type: 'image', src: '/assets/projects/13_5.png', caption: 'Ranked Pain-Point Quotes' },
     ]
   },
   {
@@ -348,12 +341,12 @@ export const projects = [
     tags: ['Python', 'PyTorch', 'Graph Neural Networks', 'Healthcare AI'],
     links: { github: 'https://github.com/abineha/LogBB-Permeability-of-B3P3-Compounds' },
     media: [
-      { type: 'image', src: '/assets/projects/14_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/14_2.png', caption: '# 2' },
-      { type: 'image', src: '/assets/projects/14_3.png', caption: '# 3' },
-      { type: 'image', src: '/assets/projects/14_4.png', caption: '# 4' },
-      { type: 'image', src: '/assets/projects/14_5.png', caption: '# 5' },
-      { type: 'image', src: '/assets/projects/14_6.png', caption: '# 6' },
+      { type: 'image', src: '/assets/projects/14_1.png', caption: 'Sample input data' },
+      { type: 'image', src: '/assets/projects/14_2.png', caption: 'Regression Results' },
+      { type: 'image', src: '/assets/projects/14_3.png', caption: 'Graph convolution network architecture' },
+      { type: 'image', src: '/assets/projects/14_4.png', caption: 'SMILES representations' },
+      { type: 'image', src: '/assets/projects/14_5.png', caption: 'MPNN architecture' },
+      { type: 'image', src: '/assets/projects/14_6.png', caption: 'Prediction vs true value results' },
     ]
   },
   {
@@ -374,9 +367,9 @@ export const projects = [
     tags: ['Python', 'OpenCV', 'Raspberry Pi', 'Arduino'],
     links: { github: 'https://github.com/abineha/Face-Tracking-Rover' },
     media: [
-      { type: 'image', src: '/assets/projects/15_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/15_2.png', caption: '# 2' },
-      { type: 'image', src: '/assets/projects/15_3.png', caption: '# 3' },
+      { type: 'image', src: '/assets/projects/15_1.png', caption: 'Components of the Face-Tracking Rover' },
+      { type: 'image', src: '/assets/projects/15_2.png', caption: 'Face Detection live feed' },
+      { type: 'image', src: '/assets/projects/15_3.png', caption: 'Hardware model of the Face-Tracking Rover' },
     ]
   },
   {
@@ -396,8 +389,8 @@ export const projects = [
     tags: ['Python', 'Raspberry Pi', 'Embedded Systems', 'IoT'],
     links: { github: 'https://github.com/abineha/Transcription-Glasses' },
     media: [
-      { type: 'image', src: '/assets/projects/16_1.jpg', caption: '# 1' },
-      { type: 'video', src: '/assets/projects/16_2.mp4', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/16_1.jpg', caption: 'Framework Overview' },
+      { type: 'video', src: '/assets/projects/16_2.mp4', caption: 'Live Demo' },
     ]
   },
   {
@@ -417,12 +410,12 @@ export const projects = [
     tags: ['Python', 'TensorFlow', 'EfficientNet', 'Healthcare AI'],
     links: { github: 'https://github.com/abineha/Diabetic-Retinopathy' },
     media: [
-      { type: 'image', src: '/assets/projects/17_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/17_2.png', caption: '# 2' },
-      { type: 'image', src: '/assets/projects/17_3.png', caption: '# 3' },
-      { type: 'image', src: '/assets/projects/17_4.png', caption: '# 4' },
-      { type: 'image', src: '/assets/projects/17_5.png', caption: '# 5' },
-      { type: 'image', src: '/assets/projects/17_6.png', caption: '# 6' },
+      { type: 'image', src: '/assets/projects/17_1.png', caption: 'ML Algorithm Overview' },
+      { type: 'image', src: '/assets/projects/17_2.png', caption: 'Result comparison of supervised, unsupervised, and neural networks' },
+      { type: 'image', src: '/assets/projects/17_3.png', caption: 'Training and Inference Process' },
+      { type: 'image', src: '/assets/projects/17_4.png', caption: 'LightGBM Workflow' },
+      { type: 'image', src: '/assets/projects/17_5.png', caption: 'EfficientNet Architecture' },
+      { type: 'image', src: '/assets/projects/17_6.png', caption: 'Feature Extraction Process' },
     ]
   },
   {
@@ -442,12 +435,12 @@ export const projects = [
     tags: ['Python', 'TensorFlow', 'CNN-LSTM', 'Healthcare AI'],
     links: { github: 'https://github.com/abineha/Video-Based-Analysis-of-Neurodevelopmental-Children-Behavior-using-CNN-LSTM' },
     media: [
-      { type: 'image', src: '/assets/projects/18_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/18_2.png', caption: '# 2' },
-      { type: 'image', src: '/assets/projects/18_3.png', caption: '# 3' },
-      { type: 'image', src: '/assets/projects/18_4.png', caption: '# 4' },
-      { type: 'image', src: '/assets/projects/18_5.png', caption: '# 5' },
-      { type: 'image', src: '/assets/projects/18_6.png', caption: '# 6' },
+      { type: 'image', src: '/assets/projects/18_1.png', caption: 'Dataset Analysis' },
+      { type: 'image', src: '/assets/projects/18_2.png', caption: 'Block Diagram' },
+      { type: 'image', src: '/assets/projects/18_3.png', caption: 'Workflow + UI' },
+      { type: 'image', src: '/assets/projects/18_4.png', caption: 'Architecture Diagram' },
+      { type: 'image', src: '/assets/projects/18_5.png', caption: 'Pipeline Overview' },
+      { type: 'image', src: '/assets/projects/18_6.png', caption: 'Comparison of Models' },
     ]
 
   },
@@ -467,8 +460,8 @@ export const projects = [
     tags: ['C#', 'Unity', 'AR/VR', 'XR Toolkit'],
     links: { github: 'https://github.com/abineha/Revolutionizing-Apartment-Design-Immersive-VR-and-AR-Exploration' },
     media: [
-      { type: 'image', src: '/assets/projects/19_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/19_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/19_1.png', caption: 'VR Virtual Tour' },
+      { type: 'image', src: '/assets/projects/19_2.png', caption: 'AR placement and manipulation of furnitures in space' },
     ]
     },
   {
@@ -487,8 +480,8 @@ export const projects = [
     tags: ['Python', 'scikit-learn', 'NLTK', 'NLP'],
     links: { github: 'https://github.com/abineha/newsclassification' },
     media: [
-      { type: 'image', src: '/assets/projects/20_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/20_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/20_1.png', caption: 'Results of training and testing data' },
+      { type: 'image', src: '/assets/projects/20_2.png', caption: 'Output Sampless' },
     ]
   },
   {
@@ -507,8 +500,8 @@ export const projects = [
     tags: ['React', 'Vite', 'Howler.js', 'CSS'],
     links: { github: 'https://github.com/abineha/portfolio-website' },
     media: [
-      { type: 'image', src: '/assets/projects/21_1.png', caption: '# 1' },
-      { type: 'image', src: '/assets/projects/21_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/21_1.png', caption: 'Homepage of the Portfolio' },
+      { type: 'image', src: '/assets/projects/21_2.png', caption: 'Project Showcase in portfolio' },
     ]
   },
 ]

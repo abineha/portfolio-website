@@ -178,6 +178,12 @@
   50%       { box-shadow: 0 0 16px rgba(126, 200, 227, 0.35), 0 0 28px rgba(168, 216, 240, 0.08); }
 }
 
+.bioParas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .aboutScroll {
   display: flex;
   flex-direction: column;

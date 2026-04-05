@@ -70,11 +70,24 @@ function AppInner() {
   )
 }
 
+function MobileWarning() {
+  return (
+    <div className={styles.mobileWarning}>
+      <div className={styles.mobileCard}>
+        <p className={styles.mobileIcon}>🖥️</p>
+        <h1 className={styles.mobileTitle}>Best experienced on desktop.</h1>
+        <p className={styles.mobileText}>Not suitable for phone!</p>
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <AudioProvider>
       <BrowserRouter>
         <CustomCursor />
+        <MobileWarning />
         <AppInner />
       </BrowserRouter>
     </AudioProvider>
