@@ -71,7 +71,7 @@ export const projects = [
   },
   {
     id: 3,
-    title: 'CardioGuard: Real-Time Arrhythmia Detection',
+    title: 'CardioGuard: Real-Time Arrhythmia Detection for Athletes',
     status: 'completed',
     domain: 'ai-ml',
     size: 'large',
@@ -237,19 +237,30 @@ export const projects = [
   },
   {
     id: 10,
-    title: 'Automated Test Case Generator',
+    title: 'Requirements Classification & Prioritisation System',
     status: 'completed',
     domain: 'ai-ml',
     size: 'wide',
-    icon: '🧪',
-    summary: 'AI-driven tool for automating software test case repository maintenance using ASTs and NLP, published in IEEE Potentials.',
+    icon: '📋',
+    summary: 'Two-stage NLP pipeline to automatically classify and prioritise 700+ Agile user stories across multiple domains including banking, education, and retail.',
     contributions: [
-      'Built automated tool using Abstract Syntax Trees to generate exhaustive test cases for C, C++, Python, Java, and Smalltalk.',
-      'Applied NLP-based deep learning for test case classification and prioritization.',
-      'Published in IEEE Potentials magazine.',
+      'Applied KeyBERT-based keyword extraction to identify high-signal terms from each user story, improving downstream classification quality.',
+      'Developed a Naive Bayes classifier with CountVectorizer features for domain classification and prioritisation into AAA categories aligned with TDD principles.',
+      'Enhanced performance with a CNN-based text classification model, comparing deep learning results against classical ML baselines.',
+      'Designed an end-to-end workflow covering preprocessing, feature extraction, model training, evaluation, and result logging for comparative analysis.',
     ],
-    tags: ['Python', 'NLP', 'AST', 'Deep Learning'],
-    links: { paper: 'IEEE Potentials' },
+    tags: ['Python', 'NLP', 'KeyBERT', 'CNN'],
+    links: {
+      'github (NLP)': 'https://github.com/abineha/Text-based-classification',
+      'github (DL)': 'https://github.com/abineha/deeplearning-Text-based-classification',
+    },
+    media: [
+      { type: 'image', src: '/assets/projects/10_1.png', caption: 'The framework of keyword extraction and classification. DL: deep learning; ML: machine learning' },
+      { type: 'image', src: '/assets/projects/10_2.png', caption: 'Repository generation' },
+      { type: 'image', src: '/assets/projects/10_3.png', caption: 'The output for a given instance of a user story' },
+      { type: 'image', src: '/assets/projects/10_4.png', caption: 'Model evaluation results' },
+    ]
+
   },
   {
     id: 11,
@@ -266,6 +277,13 @@ export const projects = [
     ],
     tags: ['Python', 'FAISS', 'RAG', 'Streamlit', 'BERTScore'],
     links: { github: 'https://github.com/abineha/Mediterranean-Cuisine-RAG-System' },
+    media: [
+      { type: 'image', src: '/assets/projects/11_1.png', caption: 'The architecture of the RAG system' },
+      { type: 'image', src: '/assets/projects/11_2.png', caption: 'Evaluation results for embedding strategies' },
+      { type: 'image', src: '/assets/projects/11_3.png', caption: 'Evaluation results for retrieval strategies' },
+      { type: 'image', src: '/assets/projects/11_4.png', caption: 'Streamlit app interface for live Q&A' },
+      { type: 'image', src: '/assets/projects/11_5.png', caption: 'Side-by-side retrieval comparison in the Streamlit app' },
+    ]
   },
   {
     id: 12,
@@ -305,6 +323,13 @@ export const projects = [
     ],
     tags: ['Python', 'NLP', 'VADER', 'Web Scraping'],
     links: { github: 'https://github.com/abineha/swim_apps_research' },
+    media: [
+      { type: 'image', src: '/assets/projects/13_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/13_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/13_3.png', caption: '# 3' },
+      { type: 'image', src: '/assets/projects/13_4.png', caption: '# 4' },
+      { type: 'image', src: '/assets/projects/13_5.png', caption: '# 5' },
+    ]
   },
   {
     id: 14,
@@ -322,6 +347,14 @@ export const projects = [
     ],
     tags: ['Python', 'PyTorch', 'Graph Neural Networks', 'Healthcare AI'],
     links: { github: 'https://github.com/abineha/LogBB-Permeability-of-B3P3-Compounds' },
+    media: [
+      { type: 'image', src: '/assets/projects/14_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/14_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/14_3.png', caption: '# 3' },
+      { type: 'image', src: '/assets/projects/14_4.png', caption: '# 4' },
+      { type: 'image', src: '/assets/projects/14_5.png', caption: '# 5' },
+      { type: 'image', src: '/assets/projects/14_6.png', caption: '# 6' },
+    ]
   },
   {
     id: 15,
@@ -340,6 +373,11 @@ export const projects = [
     ],
     tags: ['Python', 'OpenCV', 'Raspberry Pi', 'Arduino'],
     links: { github: 'https://github.com/abineha/Face-Tracking-Rover' },
+    media: [
+      { type: 'image', src: '/assets/projects/15_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/15_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/15_3.png', caption: '# 3' },
+    ]
   },
   {
     id: 16,
@@ -357,6 +395,10 @@ export const projects = [
     ],
     tags: ['Python', 'Raspberry Pi', 'Embedded Systems', 'IoT'],
     links: { github: 'https://github.com/abineha/Transcription-Glasses' },
+    media: [
+      { type: 'image', src: '/assets/projects/16_1.jpg', caption: '# 1' },
+      { type: 'video', src: '/assets/projects/16_2.mp4', caption: '# 2' },
+    ]
   },
   {
     id: 17,
@@ -374,6 +416,14 @@ export const projects = [
     ],
     tags: ['Python', 'TensorFlow', 'EfficientNet', 'Healthcare AI'],
     links: { github: 'https://github.com/abineha/Diabetic-Retinopathy' },
+    media: [
+      { type: 'image', src: '/assets/projects/17_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/17_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/17_3.png', caption: '# 3' },
+      { type: 'image', src: '/assets/projects/17_4.png', caption: '# 4' },
+      { type: 'image', src: '/assets/projects/17_5.png', caption: '# 5' },
+      { type: 'image', src: '/assets/projects/17_6.png', caption: '# 6' },
+    ]
   },
   {
     id: 18,
@@ -391,6 +441,15 @@ export const projects = [
     ],
     tags: ['Python', 'TensorFlow', 'CNN-LSTM', 'Healthcare AI'],
     links: { github: 'https://github.com/abineha/Video-Based-Analysis-of-Neurodevelopmental-Children-Behavior-using-CNN-LSTM' },
+    media: [
+      { type: 'image', src: '/assets/projects/18_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/18_2.png', caption: '# 2' },
+      { type: 'image', src: '/assets/projects/18_3.png', caption: '# 3' },
+      { type: 'image', src: '/assets/projects/18_4.png', caption: '# 4' },
+      { type: 'image', src: '/assets/projects/18_5.png', caption: '# 5' },
+      { type: 'image', src: '/assets/projects/18_6.png', caption: '# 6' },
+    ]
+
   },
   {
     id: 19,
@@ -407,33 +466,17 @@ export const projects = [
     ],
     tags: ['C#', 'Unity', 'AR/VR', 'XR Toolkit'],
     links: { github: 'https://github.com/abineha/Revolutionizing-Apartment-Design-Immersive-VR-and-AR-Exploration' },
-  },
+    media: [
+      { type: 'image', src: '/assets/projects/19_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/19_2.png', caption: '# 2' },
+    ]
+    },
   {
     id: 20,
-    title: 'Requirements Classification & Prioritisation System',
-    status: 'completed',
-    domain: 'ai-ml',
-    size: 'small',
-    icon: '📋',
-    summary: 'Two-stage NLP pipeline to automatically classify and prioritise 700+ Agile user stories across multiple domains including banking, education, and retail.',
-    contributions: [
-      'Applied KeyBERT-based keyword extraction to identify high-signal terms from each user story, improving downstream classification quality.',
-      'Developed a Naive Bayes classifier with CountVectorizer features for domain classification and prioritisation into AAA categories aligned with TDD principles.',
-      'Enhanced performance with a CNN-based text classification model, comparing deep learning results against classical ML baselines.',
-      'Designed an end-to-end workflow covering preprocessing, feature extraction, model training, evaluation, and result logging for comparative analysis.',
-    ],
-    tags: ['Python', 'NLP', 'KeyBERT', 'CNN'],
-    links: {
-      'github (NLP)': 'https://github.com/abineha/Text-based-classification',
-      'github (DL)': 'https://github.com/abineha/deeplearning-Text-based-classification',
-    },
-  },
-  {
-    id: 21,
     title: 'BBC News Classifier',
     status: 'completed',
     domain: 'ai-ml',
-    size: 'large',
+    size: 'small',
     icon: '📰',
     summary: 'Multi-class text classification pipeline categorising BBC news articles into 5 categories using Multinomial Naive Bayes, trained on a parsed corpus of raw .txt files.',
     contributions: [
@@ -443,13 +486,17 @@ export const projects = [
     ],
     tags: ['Python', 'scikit-learn', 'NLTK', 'NLP'],
     links: { github: 'https://github.com/abineha/newsclassification' },
+    media: [
+      { type: 'image', src: '/assets/projects/20_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/20_2.png', caption: '# 2' },
+    ]
   },
   {
-    id: 22,
+    id: 21,
     title: 'Personal Portfolio Website',
     status: 'completed',
     domain: 'tools',
-    size: 'wide',
+    size: 'large',
     icon: '✨',
     summary: 'Fully custom portfolio built with React 18 and Vite 5, featuring client-side routing, a distinctive visual identity with 47.6% custom CSS and no component library, and deployed live on Vercel.',
     contributions: [
@@ -459,5 +506,9 @@ export const projects = [
     ],
     tags: ['React', 'Vite', 'Howler.js', 'CSS'],
     links: { github: 'https://github.com/abineha/portfolio-website' },
+    media: [
+      { type: 'image', src: '/assets/projects/21_1.png', caption: '# 1' },
+      { type: 'image', src: '/assets/projects/21_2.png', caption: '# 2' },
+    ]
   },
 ]
